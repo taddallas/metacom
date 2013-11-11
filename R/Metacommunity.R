@@ -1,9 +1,9 @@
-metacommunity <-function(comm, scores=1, method='r1', sims=1000, order=TRUE, allow.empty=FALSE){
+Metacommunity <-function(comm, scores=1, method='r1', sims=1000, order=TRUE, allow.empty=FALSE){
 	if(order==TRUE){mat=OrderMatrix(comm,scores=scores)
 	}else{mat=comm}
 
 #creates nulls with which to test the three EMS metrics
-nulls=nullmaker(mat, sims=sims, method=method,allow.empty=allow.empty)
+nulls=NullMaker(mat, sims=sims, method=method,allow.empty=allow.empty)
 
 #calculates the number of embedded absences
 coherence <- function(web) {

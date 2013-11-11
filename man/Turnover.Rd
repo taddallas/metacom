@@ -87,8 +87,8 @@ Tad Dallas
 
 \examples{
 #define an interaction matrix
-data(testmatrices)
-intmat=testmatrices[[3]]
+data(TestMatrices)
+intmat=TestMatrices[[3]]
 
 #determine species turnover
 turnover.intmat=Turnover(intmat, method='r1', sims=1000, scores=1)

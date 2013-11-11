@@ -5,7 +5,7 @@
 Determines coherence
 }
 \description{
-This function determines the number of embedded absences in an interaction matrix, and compares this value against null simulated matrices. Species ranges should be coherent along the ordination axis, as this axis represents a latent environmental gradient. A negative value of coherence (empirical matrix has more embedded absences than null matrices) indicates a 'checkerboard' pattern, whereas nonsignificance indicates a 'random' pattern (Leibold & Mikkelson 2002). 
+This function determines the number of embedded absences in an interaction matrix, and compares this value against null simulated matrices. Species ranges should be coherent along the ordination axis, as this axis represents a latent environmental gradient. A negative value of coherence (empirical matrix has more embedded absences than null matrices) indicates a 'checkerboard' pattern (Leibold & Mikkelson 2002). Nonsignificance has been historically interpreted as being indicative of a 'random' pattern, though this may be seen as accepting the null hypothesis, as nonsignificance cannot be used to infer a process.
 }
 
 \usage{
@@ -74,8 +74,8 @@ Tad Dallas
 
 \examples{
 #define an interaction matrix
-data(testmatrices)
-intmat=testmatrices[[2]]
+data(TestMatrices)
+intmat=TestMatrices[[2]]
 
 #determine coherence of interaction matrix
 coh.intmat=Coherence(intmat, method='r1', sims=1000, scores=1, order=TRUE)

@@ -39,7 +39,7 @@ if(order==TRUE){comm=OrderMatrix(comm, scores=scores)
 }else{comm=comm}
 
 	statistic=coherence(comm)
-	nulls=nullmaker(comm=comm, sims=sims, method=method, allow.empty=allow.empty)
+	nulls=NullMaker(comm=comm, sims=sims, method=method, allow.empty=allow.empty)
 
 	simstat=as.numeric(lapply(nulls,coherence))
 	varstat=sd(simstat)

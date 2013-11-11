@@ -1,4 +1,4 @@
-imagine <- function(comm, col=c(0,1), ordinate=TRUE, fill=TRUE, xlab='Species', ylab='Site', sitenames=rownames(comm), speciesnames=colnames(comm)){
+Imagine <- function(comm, col=c(0,1), ordinate=TRUE, fill=TRUE, xlab='Species', ylab='Site', sitenames=rownames(comm), speciesnames=colnames(comm)){
   
 	require(metacom)
 	if(ordinate == TRUE){

@@ -1,4 +1,4 @@
-nullmaker=function (comm, sims = 1000, method = "r1", allow.empty = FALSE)
+NullMaker=function (comm, sims = 1000, method = "r1", allow.empty = FALSE)
 {
     ret = list()
 		

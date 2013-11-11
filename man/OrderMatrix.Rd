@@ -58,8 +58,8 @@ Tad Dallas
 
 \examples{
 #define an interaction matrix
-data(testmatrices)
-pres3c=testmatrices[[6]]
+data(TestMatrices)
+pres3c=TestMatrices[[6]]
 
 #obtain an ordinated interaction matrix
 OrderMatrix(pres3c, scores = 1, output.scores = FALSE)

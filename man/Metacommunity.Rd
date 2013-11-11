@@ -1,5 +1,5 @@
-\name{metacommunity}
-\alias{metacommunity}
+\name{Metacommunity}
+\alias{Metacommunity}
 
 
 \title{
@@ -7,12 +7,12 @@ Analysis of the Elements of Metacommunity Structure
 }
 
 \description{
-'metacommunity' is a wrapper for the analysis of the three elements of metacommunity structure (coherence, boundary clumping, & turnover) following the framework of Leibold & Mikkelson 2002. It is important to note here that the results of boundary clumping and turnover are only relevant if the matrix is significantly positively coherent (i.e. empirical matrix has fewer embedded absences than null matrices).
+'Metacommunity' is a wrapper for the analysis of the three elements of metacommunity structure (coherence, boundary clumping, & turnover) following the framework of Leibold & Mikkelson 2002. It is important to note here that the results of boundary clumping and turnover are only relevant if the matrix is significantly positively coherent (i.e. empirical matrix has fewer embedded absences than null matrices).
 
 }
 
 \usage{
-metacommunity(comm, scores=1, method = "r1", sims = 1000, 
+Metacommunity(comm, scores=1, method = "r1", sims = 1000, 
 order=TRUE, allow.empty=FALSE)
 }
 
@@ -85,11 +85,11 @@ Tad Dallas
 
 \examples{
 #define an interaction matrix
-data(testmatrices)
-lei2b=testmatrices[[4]]
+data(TestMatrices)
+lei2b=TestMatrices[[4]]
 
 #determines the elements of metacommunity structure 
-ems.intmat=metacommunity(lei2b ,method='r1' ,sims=1000, scores=1)
+ems.intmat=Metacommunity(lei2b, method='r1', sims=1000, scores=1)
 
 #return results in list form
 ems.intmat

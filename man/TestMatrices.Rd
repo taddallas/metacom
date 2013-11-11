@@ -1,5 +1,5 @@
-\name{testmatrices}
-\alias{testmatrices}
+\name{TestMatrices}
+\alias{TestMatrices}
 \docType{data}
 \title{
 Test matrices used to evaluate metacommunity functions
@@ -11,7 +11,7 @@ A list of 7 test matrices from two of the foundational papers on the elements of
 }
 
 
-\usage{data(testmatrices)}
+\usage{data(TestMatrices)}
 
 
 \format{
@@ -44,15 +44,15 @@ Presley, S. J., C. L. Higgins, and M. R. Willig. 2010. A comprehensive framework
 
 \examples{
 #load list containing interaction matrices
-data(testmatrices)
+data(TestMatrices)
 
-length(testmatrices)
-names(testmatrices)
+length(TestMatrices)
+names(TestMatrices)
 
-#image plot of interaction matrix, rotated for clarity
-lei1a=testmatrices[[1]]
-image(apply(lei1a,2,rev),col=c(0,'dodgerblue3'), axes=FALSE, xlab='species', ylab='sites', cex=1.4)
- box(lwd=2,col=1)
+#image plot of interaction matrix, using the Imagine() function
+lei1a=TestMatrices[[1]]
+Imagine(lei1a)
+
 }
 
 

@@ -1,17 +1,17 @@
-\name{imagine}
-\alias{imagine}
+\name{Imagine}
+\alias{Imagine}
 
 \title{
 Plotting of site-by-species interaction matrices
 }
 \description{
-'imagine' produces an image plot, grid of small rectangles representing species occurrences in sites, of a given interaction matrix.
+'Imagine' produces an image plot, grid of small rectangles representing species occurrences in sites, of a given interaction matrix.
 }
 
 
 
 \usage{
-imagine(comm, col=c(0,1), ordinate=TRUE, fill=TRUE, xlab='Species', 
+Imagine(comm, col=c(0,1), ordinate=TRUE, fill=TRUE, xlab='Species', 
 ylab='Site', sitenames=rownames(comm), speciesnames=colnames(comm))}
 
 
@@ -66,11 +66,11 @@ Tad Dallas
 
 \examples{
 #define an interaction matrix
-data(testmatrices)
-pres3c=testmatrices[[6]]
+data(TestMatrices)
+pres3c=TestMatrices[[6]]
 
 #plot interaction matrix
-imagine(pres3c, col=c('white','blue'), ordinate=TRUE, fill=FALSE)
+Imagine(pres3c, col=c('white','blue'), ordinate=TRUE, fill=FALSE)
 
 }
 

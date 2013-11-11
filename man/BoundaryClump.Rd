@@ -64,12 +64,13 @@ Tad Dallas
 \examples{
 
 ## define an interaction matrix
-data(testmatrices)
-intmat=testmatrices[[1]]
+data(TestMatrices)
+intmat=TestMatrices[[1]]
 
 ## analysis of boundary clumping
 bound.test=BoundaryClump(intmat)
 
 ## prints a single row data.frame containing the Morisita's index, p-value, and degrees of freedom
 bound.test
+
 }

@@ -1,5 +1,5 @@
-\name{nullmaker}
-\alias{nullmaker}
+\name{NullMaker}
+\alias{NullMaker}
 \title{
 Null matrix creator
 }
@@ -9,7 +9,7 @@ Creates null matrices based on the constraints of the null model algorithm ('met
 }
 
 \usage{
-nullmaker(comm, sims = 1000, method = "r1", allow.empty=FALSE)
+NullMaker(comm, sims = 1000, method = "r1", allow.empty=FALSE)
 }
 
 \arguments{
@@ -52,11 +52,11 @@ commsimulator()
 
 \examples{
 #define an interaction matrix
-data(testmatrices)
-intmat=testmatrices[[4]]
+data(TestMatrices)
+intmat=TestMatrices[[4]]
 
 #creation of the null matrices
-nulls=nullmaker(intmat, sims=1000,method='r1')
+nulls=NullMaker(intmat, sims=1000,method='r1')
 
 #output is a list of length sims with each list element corresponding to a null matrix
 str(nulls)

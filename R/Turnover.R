@@ -24,7 +24,7 @@ turnover=function(web){
 }
 
 	statistic=turnover(comm)
-	nulls=nullmaker(comm=comm, sims=sims, method=method,allow.empty=allow.empty)
+	nulls=NullMaker(comm=comm, sims=sims, method=method,allow.empty=allow.empty)
 	simstat=as.numeric(lapply(nulls,turnover))
 	varstat=sd(simstat)
 	z = (mean(simstat)-statistic)/(varstat)
