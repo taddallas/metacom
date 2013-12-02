@@ -1,8 +1,8 @@
-Imagine <- function(comm, col=c(0,1), ordinate=TRUE, fill=TRUE, xlab='Species', ylab='Site', sitenames=rownames(comm), speciesnames=colnames(comm)){
+Imagine <- function(comm, col=c(0,1), ordinate=TRUE, fill=TRUE, binary=TRUE, xlab='Species', ylab='Site', sitenames=rownames(comm), speciesnames=colnames(comm)){
   
 	require(metacom)
 	if(ordinate == TRUE){
-	comm=OrderMatrix(comm)}
+	comm=OrderMatrix(comm, binary=binary)}
 
 	if(fill==TRUE){
 	for(i in 1:dim(comm)[2]){
@@ -34,7 +34,7 @@ if(length(speciesnames)>1){
 axis(3, at=1:dim(comm)[2], labels=speciesnames, cex.axis=1, lwd.ticks=0)
 }
 
-mtext(xlab ,3, cex=1.5, line=3)
+mtext(xlab ,2, cex=1.5, line=3)
 mtext(ylab ,2, cex=1.5, line=3)
 }
 

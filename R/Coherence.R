@@ -1,4 +1,4 @@
-Coherence <-function(comm, method='r1', sims=1000, scores=1, order=TRUE,allow.empty=FALSE){
+Coherence <-function(comm, method='r1', sims=1000, scores=1, order=TRUE, allow.empty=FALSE, binary=TRUE){
 
 coherence <-function(web){
 	zeros=which(web==0, arr.ind=TRUE)	
@@ -35,7 +35,7 @@ return(dim(ret)[1])
 
 
 
-if(order==TRUE){comm=OrderMatrix(comm, scores=scores)
+if(order==TRUE){comm=OrderMatrix(comm, scores=scores, binary=binary)
 }else{comm=comm}
 
 	statistic=coherence(comm)

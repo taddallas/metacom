@@ -1,5 +1,5 @@
-BoundaryClump <-function(comm, order=TRUE, scores=1){
-	if(order==TRUE){comm=OrderMatrix(comm,scores=scores)}
+BoundaryClump <-function(comm, order=TRUE, scores=1, binary=TRUE){
+	if(order==TRUE){comm=OrderMatrix(comm, scores=scores, binary=binary)}
 
 	for(i in 1:dim(comm)[1]){
 			temp=comm[i,]

@@ -1,10 +1,10 @@
-NullMaker=function (comm, sims = 1000, method = "r1", allow.empty = FALSE)
+NullMaker=function (comm, sims = 1000, method = "r1", scores=1, allow.empty = FALSE)
 {
     ret = list()
-		
+		comm=0+(comm>0)
 		if(method=='fixedfixed'){
 			ret=permatfull(comm, fixedmar='both', mtype='prab', times=sims)$perm
-			ret=lapply(ret, OrderMatrix)
+			ret=lapply(ret, OrderMatrix, scores=scores)
 		}
 
 		if(method!='fixedfixed'){
@@ -14,9 +14,8 @@ NullMaker=function (comm, sims = 1000, method = "r1", allow.empty = FALSE)
 					  temp = commsimulator(comm, method = method)
             if (any(rowSums(temp) < 1) || any(colSums(temp) < 
                 1)) {
-            }
-            else {
-                ret[[i]] = OrderMatrix(temp)
+            }else{
+                ret[[i]] = OrderMatrix(temp, scores=scores)
                 i = i + 1
             }
         }
@@ -25,7 +24,7 @@ NullMaker=function (comm, sims = 1000, method = "r1", allow.empty = FALSE)
         i = 1
         while (i < sims + 1) {
             temp = commsimulator(comm, method = method)
-            ret[[i]] = OrderMatrix(temp)
+            ret[[i]] = OrderMatrix(temp, scores=scores)
             i = i + 1
         }
     }

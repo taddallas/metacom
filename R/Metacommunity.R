@@ -1,5 +1,5 @@
-Metacommunity <-function(comm, scores=1, method='r1', sims=1000, order=TRUE, allow.empty=FALSE){
-	if(order==TRUE){mat=OrderMatrix(comm,scores=scores)
+Metacommunity <-function(comm, scores=1, method='r1', sims=1000, order=TRUE, allow.empty=FALSE, binary=TRUE){
+	if(order==TRUE){mat=OrderMatrix(comm,scores=scores, binary=binary)
 	}else{mat=comm}
 
 #creates nulls with which to test the three EMS metrics
@@ -56,7 +56,7 @@ coh.out=data.frame(output=c(embabs,z,pval,mean(simstat),varstat, method))
 rownames(coh.out)=c('embedded absences', 'z', 'pval', 'sim.mean', 'sim.sd', 'method')
 
 #boundary clumping
-boundmat=BoundaryClump(mat, scores=scores, order=order)
+boundmat=BoundaryClump(mat, scores=scores, order=order, binary=binary)
 
 #turnover function
 turnover = function(web) {
