@@ -61,6 +61,6 @@ A cautionary note:
   
 The 'metacom' package is partially adapted from previous Matlab
 code written by Christopher Higgins (available at
-http://www.tarleton.edu/Faculty/higgins/EMS.htm) and relies on
+http://faculty.tarleton.edu/higgins/metacommunity-structure.html) and relies on
 many functions in the 'vegan' package (Oksanen et al. 2012)
 
