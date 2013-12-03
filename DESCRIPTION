@@ -1,10 +1,12 @@
 Package: metacom
 Type: Package
-Title: Analysis of the 'elements of metacommunity structure' 
-Version: 1.2
-Date: 2012-12-28
+Title: Analysis of the 'Elements of Metacommunity Structure' 
+Version: 1.4
+Date: 2013-12-10
 Author: Tad Dallas 
 Depends: vegan, lattice
 Maintainer: Tad Dallas <tad.dallas@drakeresearchlab.com>
 Description: Functions to analyze coherence, boundary clumping, and turnover following the pattern-based metacommunity analysis of Leibold and Mikkelson 2002 
+LazyLoad: yes
+LazyData: yes
 License: GPL-2

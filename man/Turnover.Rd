@@ -14,7 +14,7 @@ If the 'community' perspective is desired, simply transpose the matrix before an
 
 \usage{
 Turnover(comm, method = "r1", sims = 1000, scores = 1, 
-order=TRUE, allow.empty=FALSE)
+order=TRUE, allow.empty=FALSE, binary=TRUE)
 }
 
 
@@ -41,6 +41,10 @@ logical argument indicating whether to ordinate the interaction matrix or not. S
 
 		\item{allow.empty}{
 logical argument indicating whether to allow null matrices to have empty rows or columns
+}
+
+ \item{binary}{
+logical argument indicating whether to ordinate the community matrix based on abundance or binary (default) data.
 }
 
 }
@@ -91,7 +95,7 @@ data(TestMatrices)
 intmat=TestMatrices[[3]]
 
 #determine species turnover
-turnover.intmat=Turnover(intmat, method='r1', sims=1000, scores=1)
+turnover.intmat=Turnover(intmat, method='r1', sims=1000, scores=1, binary=TRUE)
 
 #return results in list form
 turnover.intmat

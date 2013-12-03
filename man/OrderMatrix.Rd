@@ -11,7 +11,7 @@ Ordinates interaction matrix
 
 
 \usage{
-OrderMatrix(comm, scores = 1, output.scores=FALSE)
+OrderMatrix(comm, scores = 1, output.scores=FALSE, binary=TRUE)
 }
 
 
@@ -27,6 +27,11 @@ axis scores to ordinate matrix. 1: primary axis scores (default) 2: secondary ax
 	\item{output.scores}{
 logical. Default is to return the ordinated matrix. If 'output.scores' is TRUE, the function returns the site and species scores.
 }
+
+ \item{binary}{
+logical argument indicating whether to ordinate the community matrix based on abundance or binary (default) data.
+}
+
 }
 
 

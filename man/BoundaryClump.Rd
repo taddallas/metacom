@@ -19,7 +19,7 @@ The default is the range perspective, meaning that the analyses of boundary clum
 
 
 \usage{
-BoundaryClump(comm, order=TRUE, scores=1)
+BoundaryClump(comm, order=TRUE, scores=1, binary=TRUE)
 }
 
 
@@ -33,6 +33,10 @@ logical argument indicating whether to ordinate the interaction matrix or not. S
 
   \item{scores}{
 axis scores to ordinate matrix. 1: primary axis scores (default) 2: secondary axis scores
+}
+
+ \item{binary}{
+logical argument indicating whether to ordinate the community matrix based on abundance or binary (default) data.
 }
 }
 
@@ -68,7 +72,7 @@ data(TestMatrices)
 intmat=TestMatrices[[1]]
 
 ## analysis of boundary clumping
-bound.test=BoundaryClump(intmat)
+bound.test=BoundaryClump(intmat, order=TRUE, scores=1, binary=TRUE)
 
 ## prints a single row data.frame containing the Morisita's index, p-value, and degrees of freedom
 bound.test

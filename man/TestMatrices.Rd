@@ -7,7 +7,7 @@ Test matrices used to evaluate metacommunity functions
 
 
 \description{
-A list of 7 test matrices from two of the foundational papers on the elements of metacommunity structure (Leibold & Mikkelson 2002 and Presley et al. 2010)
+A list of 7 test matrices from two of the foundational papers on the Elements of Metacommunity Structure analysis (Leibold & Mikkelson 2002 and Presley et al. 2010)
 }
 
 
@@ -51,7 +51,7 @@ names(TestMatrices)
 
 #image plot of interaction matrix, using the Imagine() function
 lei1a=TestMatrices[[1]]
-Imagine(lei1a)
+Imagine(lei1a, fill=FALSE, ordinate=TRUE)
 
 }
 

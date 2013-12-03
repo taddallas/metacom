@@ -12,7 +12,7 @@ Plotting of site-by-species interaction matrices
 
 \usage{
 Imagine(comm, col=c(0,1), ordinate=TRUE, fill=TRUE, xlab='Species', 
-ylab='Site', sitenames=rownames(comm), speciesnames=colnames(comm))}
+ylab='Site', sitenames=rownames(comm), speciesnames=colnames(comm), binary=TRUE)}
 
 
 
@@ -45,6 +45,9 @@ names for each row in the interaction matrix. Default is to not plot names.
 
 	\item{speciesnames}{
 names for each site in the interaction matrix. Default is to not plot names.
+}
+ \item{binary}{
+logical argument indicating whether to ordinate the community matrix based on abundance or binary (default) data.
 }
 
 }

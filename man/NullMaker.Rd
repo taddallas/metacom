@@ -9,7 +9,7 @@ Creates null matrices based on the constraints of the null model algorithm ('met
 }
 
 \usage{
-NullMaker(comm, sims = 1000, method = "r1", allow.empty=FALSE)
+NullMaker(comm, sims = 1000, method = "r1", scores=1, allow.empty=FALSE)
 }
 
 \arguments{
@@ -21,6 +21,9 @@ number of simulated null matrices to use in analysis
 }
   \item{method}{
 null model randomization method. See details below.
+}
+  \item{scores}{
+Axis scores to ordinate matrix. 1: primary axis scores (default) 2: secondary axis scores. See Details.
 }
 		\item{allow.empty}{
 logical argument indicating whether to allow null matrices to have empty rows or columns

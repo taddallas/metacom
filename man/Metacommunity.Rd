@@ -13,7 +13,7 @@ Analysis of the Elements of Metacommunity Structure
 
 \usage{
 Metacommunity(comm, scores=1, method = "r1", sims = 1000, 
-order=TRUE, allow.empty=FALSE)
+order=TRUE, allow.empty=FALSE, binary=TRUE)
 }
 
 
@@ -40,6 +40,11 @@ logical argument indicating whether to ordinate the interaction matrix or not. S
 
 		\item{allow.empty}{
 logical argument indicating whether to allow null matrices to have empty rows or columns
+}
+
+ \item{binary}{
+logical argument indicating whether to ordinate the community matrix 
+based on abundance or binary (default) data.
 }
 
 
