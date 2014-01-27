@@ -1,8 +1,8 @@
-Imagine <- function(comm, col=c(0,1), ordinate=TRUE, fill=TRUE,  xlab='Species', ylab='Site', sitenames=rownames(comm), speciesnames=colnames(comm), binary=TRUE){
+Imagine <- function(comm, col=c(0,1), ordinate=TRUE, scores=1, fill=TRUE,  xlab='Species', ylab='Site', sitenames=rownames(comm), speciesnames=colnames(comm), binary=TRUE){
   
 	require(metacom)
 	if(ordinate == TRUE){
-	comm=OrderMatrix(comm, binary=binary)}
+	comm=OrderMatrix(comm, binary=binary, scores=scores)}
 
 	if(fill==TRUE){
 	for(i in 1:dim(comm)[2]){
