@@ -6,12 +6,12 @@ BoundaryClump <-function(comm, order=TRUE, scores=1, binary=TRUE){
 			comm[i,min(which(temp==1)):max(which(temp==1))]<-1	
 		}
 	M=0
-	ComBnd=rep(0,c)
+	ComBnd=rep(0,dim(comm)[2])
 	ComBndChi=0
 
 	for(i in 1:dim(comm)[1]){
 		ind1=which(comm[i,]==1)
-		for(j in 1:c){
+		for(j in 1:dim(comm)[2]){
 		  if(min(ind1) == j) {ComBnd[j]=ComBnd[j]+1}
 			if(max(ind1) == j) {ComBnd[j]=ComBnd[j]+1}
 		}
@@ -32,3 +32,4 @@ BoundaryClump <-function(comm, order=TRUE, scores=1, binary=TRUE){
 	}
   return(data.frame(index=M,P=Mpr,df=df))
 }
+
