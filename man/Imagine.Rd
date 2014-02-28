@@ -12,7 +12,7 @@ Plotting of site-by-species interaction matrices
 
 \usage{
 Imagine(comm, col=c(0,1), ordinate=TRUE, fill=TRUE, xlab='Species', 
-ylab='Site', sitenames=rownames(comm), speciesnames=colnames(comm), binary=TRUE)}
+ylab='Site', yline=3, xline=3, sitenames=rownames(comm), speciesnames=colnames(comm), binary=TRUE)}
 
 
 
@@ -39,6 +39,14 @@ name of the x axis
 	\item{ylab}{
 name of the y axis
 }
+
+	\item{yline}{
+line that the y-axis label is plotted on. 
+}
+	\item{xline}{
+line that the x-axis label is plotted on. 
+}
+
 	\item{sitenames}{
 names for each row in the interaction matrix. Default is to not plot names.
 }
