@@ -1,5 +1,6 @@
 ### *metacom*: an R package for the analysis of metacommunity structure
 
+[![Build Status](https://travis-ci.org/taddallas/metacom.svg?branch=master,osx)](https://travis-ci.org/craigcitro/r-travis)
 
 
 Description:
