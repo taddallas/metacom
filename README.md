@@ -2,6 +2,13 @@
 
 [![Build Status](https://travis-ci.org/taddallas/metacom.png?branch=master)](https://travis-ci.org/taddallas/metacom)
 
+### Install
+
+```r
+# install.packages("devtools")
+devtools::install_github("taddallas/metacom")
+library("metacom")
+```
 
 Description:
 
