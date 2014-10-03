@@ -1,10 +1,11 @@
 OrderMatrix <-function(comm, scores=1, output.scores=FALSE, binary=TRUE){
+	require(vegan)	
 	if(binary==TRUE){comm=(comm>0)+0}
 
-#reciprocal averaging
+	#reciprocal averaging
 	temp=decorana(comm,ira=1)
 
-#ordering of matrix
+	#ordering of matrix
 	if(output.scores==FALSE){
 	ret=comm[order(temp$rproj[,scores], decreasing=FALSE), order(temp$cproj[,scores],decreasing=FALSE)]
 	ret=as.matrix(ret)	

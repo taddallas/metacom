@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/taddallas/metacom.png?branch=master)](https://travis-ci.org/taddallas/metacom)
 
+
 ### Install
+Either install from [CRAN](http://cran.r-project.org/web/packages/metacom/index.html), or directly from GitHub using the code below. Note that GitHub is the development version of the package, which may or may not differ from what's on CRAN. 
 
 ```r
 # install.packages("devtools")
