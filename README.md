@@ -6,7 +6,14 @@
 ### Install
 Either install from [CRAN](http://cran.r-project.org/web/packages/metacom/index.html), or directly from GitHub using the code below. Note that GitHub is the development version of the package, which may or may not differ from what's on CRAN. 
 
+
 ```r
+# From CRAN
+install.packages("metacom")
+```
+
+```r
+# From GitHub
 # install.packages("devtools")
 devtools::install_github("taddallas/metacom")
 library("metacom")
@@ -59,7 +66,7 @@ A cautionary note:
      can be performed to allow (or not allow) sites to be empty, or
      species to not exist at any site (i.e. column sums and/or row sums
      are allowed to be zero). This is controlled by the logical
-     argument 'allow.empty' in the metacommunity(), nullmaker(),
+     argument 'allow.empty' in the Metacommunity(), NullMaker(),
      Coherence(), and Turnover() functions. Restricting nulls to not
      allow empty rows or columns may be biologically realistic, but it
      also reduces the number of unique null matrices that can be built,
@@ -70,7 +77,5 @@ A cautionary note:
   
   
 The 'metacom' package is partially adapted from previous Matlab
-code written by Christopher Higgins (available at
-http://faculty.tarleton.edu/higgins/metacommunity-structure.html) and relies on
-many functions in the 'vegan' package (Oksanen et al. 2012)
+code written by Christopher Higgins (available [here](http://faculty.tarleton.edu/higgins/metacommunity-structure.html)) and relies on many functions in the 'vegan' package (Oksanen et al. 2012). 
 

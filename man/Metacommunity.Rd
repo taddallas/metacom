@@ -75,6 +75,8 @@ If 'order' is FALSE, the interaction matrix is not ordinated, allowing the user 
 
 
 \references{
+Dallas,T. 2014. metacom: an R package for the analysis of metacommunity structure. Ecography. DOI:10.1111/j.1600-0587.2013.00695.x
+
 Leibold, M.A. and G.M. Mikkelson. 2002. Coherence, species turnover, and boundary clumping: elements of meta-community structure. Oikos 97: 237 - 250.
 
 Presley, S. J., C. L. Higgins, and M. R. Willig. 2010. A comprehensive framework for the evaluation of metacommunity structure. Oikos 119:908-917

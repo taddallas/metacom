@@ -12,7 +12,7 @@ Pattern-based analysis of metacommunity structure}
 \tabular{ll}{
 Package: \tab metacom\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 1.4\cr
 Date: \tab 2012-12-28\cr
 License: \tab GPL-2 \cr
 }
@@ -21,7 +21,7 @@ A metacommunity is a set of sites (e.g. plants in plant-pollinator networks) ass
 
 The metacom package calculates these three metrics; coherence is calculated using the function Coherence(), boundary clumping with BoundaryClump(), and turnover (from either species or range perspective) using the Turnover() function. These functions are consolidated in the Metacommunity() function, which can be used to calculate all three metrics. In order to interpret the output of these functions, it will be helpful to read Leibold & Mikkelson 2002 and Presley et al. 2010, but to also read Ulrich and Gotelli 2013, as this paper outlines the difficulty seemingly inherent with investigating community structure. Also, these functions do not have to be used strictly in the Leibold and Mikkelson 2002 framework. 
 
-I caution the user to be aware that the creation of null matrices can be performed to allow (or not allow) sites to be empty, or species to not exist at any site (i.e. column sums and/or row sums are allowed to be zero). This is controlled by the logical argument 'allow.empty' in the metacommunity(), nullmaker(), Coherence(), and Turnover() functions. Restricting nulls to not allow empty rows or columns may be biologically realistic, but it also reduces the number of unique null matrices that can be built, which will impact computation time, making it infeasible or impossible in some situations. These situations occur when you have a very sparse interaction matrix, and is also influenced by null model algorithm ('method') that you choose. 
+I caution the user to be aware that the creation of null matrices can be performed to allow (or not allow) sites to be empty, or species to not exist at any site (i.e. column sums and/or row sums are allowed to be zero). This is controlled by the logical argument 'allow.empty' in the Metacommunity(), NullMaker(), Coherence(), and Turnover() functions. Restricting nulls to not allow empty rows or columns may be biologically realistic, but it also reduces the number of unique null matrices that can be built, which will impact computation time, making it infeasible or impossible in some situations. These situations occur when you have a very sparse interaction matrix, and is also influenced by null model algorithm ('method') that you choose. 
 
 The 'metacom' package is partially adapted from previous Matlab code written by Christopher Higgins (available at http://www.tarleton.edu/Faculty/higgins/EMS.htm) and relies on many functions in the 'vegan' package (Oksanen et al. 2012)
 }
@@ -32,6 +32,8 @@ Tad Dallas
 Tad Dallas <tad.dallas@drakeresearchlab.com>}
 
 \references{
+
+Dallas,T. 2014. metacom: an R package for the analysis of metacommunity structure. Ecography. DOI:10.1111/j.1600-0587.2013.00695.x
 
 Leibold, M. & Mikkelson, G. (2002) Coherence, species turnover, and boundary clumping: elements of metacommunity structure. Oikos, 97, 237-250.
 
