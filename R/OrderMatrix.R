@@ -1,5 +1,4 @@
 OrderMatrix <-function(comm, scores=1, output.scores=FALSE, binary=TRUE){
-	require(vegan)	
 	if(binary==TRUE){comm=(comm>0)+0}
 
 	#reciprocal averaging

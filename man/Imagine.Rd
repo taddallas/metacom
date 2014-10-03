@@ -11,8 +11,8 @@ Plotting of site-by-species interaction matrices
 
 
 \usage{
-Imagine(comm, col=c(0,1), ordinate=TRUE, fill=TRUE, xlab='Species', 
-ylab='Site', yline=3, xline=3, sitenames=rownames(comm), speciesnames=colnames(comm), binary=TRUE)}
+Imagine(comm, col=c(0,1), ordinate=TRUE, scores=1, fill=TRUE, xlab='Species', 
+ylab='Site', yline=2, xline=2, sitenames=rownames(comm), speciesnames=colnames(comm), binary=TRUE)}
 
 
 
@@ -23,6 +23,9 @@ community data in the form of a presence absence matrix
 }
   \item{col}{
 colors used to plot interactions. First value is the background color (no interaction) and the second color indicates an interaction. 
+}
+	\item{scores}{
+	axis scores to ordinate matrix. 1: primary axis scores (default) 2: secondary axis scores
 }
 	\item{ordinate}{
 logical. Should the interaction matrix be ordinated before plotting?
