@@ -52,7 +52,7 @@ J. Oksanen, F.G. Blanchet, R. Kindt, P. Legendre, P.R. Minchin, R.B. O'Hara, G.L
 }
 
 \author{
-Tad Dallas
+Tad Dallas and John Lefcheck
 }
 
 \seealso{

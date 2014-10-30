@@ -96,7 +96,7 @@ data(TestMatrices)
 test=TestMatrices[[4]]
 
 #determines the elements of metacommunity structure 
-ems.intmat=Metacommunity(test, method='r00', sims=100, scores=1)
+ems.intmat=Metacommunity(test, method='r1', sims=100, scores=1)
 
 #return results in list form
 ems.intmat

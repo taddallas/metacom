@@ -1,4 +1,5 @@
-Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = TRUE, allow.empty = FALSE, binary = TRUE, .progressBar = FALSE) 
+Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = TRUE, 
+                          allow.empty = FALSE, binary = TRUE, .progressBar = FALSE) 
 {
   if (order == TRUE) {
     mat = OrderMatrix(comm, scores = scores, binary = binary)
