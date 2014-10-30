@@ -1,6 +1,4 @@
 NullMaker=function (comm, sims = 1000, method = "r1", ordinate=TRUE, scores=1, allow.empty = FALSE){	
-install_github('vegan', 'vegandevs')
-require(vegan)
 
 null <- nullmodel(comm, method)
 nizzles <- simulate(null, nsim=sims)
@@ -25,7 +23,7 @@ replaceEmpty=function(getMatobject, null=null, sims=sims){
 
 	ret=getMatobject
 	while(length(ret) < sims){
-		spares = simulate(null, nsim = sims/10)
+		spares = simulate(null, nsim = sims)
 		sparemats=getMats(nizzles = spares, comm = comm)	
 		rspare=vector()	
 		for(i in 1:length(sparemats)){
@@ -33,8 +31,10 @@ replaceEmpty=function(getMatobject, null=null, sims=sims){
 		if(sum(rspare)>0){sparemats=sparemats[which(rspare == 0)]}
 		ret=c(ret, sparemats)
 	}
-return(ret[1:sims])
+
+return(getMatobject)
 }
+
 
 mats=getMats(nizzles, comm=comm)
 
@@ -48,3 +48,6 @@ return(rmats)
 }
 
 
+
+
+NullMaker(x, sims=100)

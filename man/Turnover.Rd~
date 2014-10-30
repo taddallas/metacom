@@ -95,11 +95,10 @@ data(TestMatrices)
 intmat=TestMatrices[[3]]
 
 #determine species turnover
-turnover.intmat=Turnover(intmat, method='r1', sims=100, scores=1, binary=TRUE)
+turnover.intmat=Turnover(intmat, method='r1', sims=1000, scores=1, binary=TRUE)
 
-#return results as a list
+#return results in list form
 turnover.intmat
-
 }
 
 

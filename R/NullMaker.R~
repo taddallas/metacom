@@ -1,4 +1,5 @@
 NullMaker=function (comm, sims = 1000, method = "r1", ordinate=TRUE, scores=1, allow.empty = FALSE){	
+require(devtools)
 install_github('vegan', 'vegandevs')
 require(vegan)
 
