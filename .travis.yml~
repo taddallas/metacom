@@ -7,9 +7,8 @@ before_install:
 
 install:
 - ./travis-tool.sh install_deps
-- ./travis-tool.sh install_github vegandevs/vegan
 
 script: ./travis-tool.sh run_tests
 
 on_failure:
-  - ./travis-tool.sh dump_logs 
+  - ./travis-tool.sh dump_logs
