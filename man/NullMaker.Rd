@@ -62,7 +62,7 @@ commsimulator(), nullmodel(), permatfull(), commsim()
 \examples{
 #define an interaction matrix
 data(TestMatrices)
-intmat=matrix(rbinom(200,1,0.25), ncol=20, nrow=10)
+intmat=TestMatrices[[7]]
 
 #creation of the null matrices
 nulls=NullMaker(intmat, sims=100, method='r1')

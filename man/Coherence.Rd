@@ -79,7 +79,8 @@ Tad Dallas
 
 \examples{
 #define an interaction matrix
-intmat=matrix(rbinom(200, 1, 0.35), ncol=20,nrow=10)
+data(TestMatrices)
+intmat=TestMatrices[[7]]
 
 #determine coherence of interaction matrix
 coh.intmat=Coherence(intmat, method='r1', sims=100, scores=1, order=TRUE, binary=TRUE)

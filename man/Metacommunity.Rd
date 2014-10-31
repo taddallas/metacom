@@ -93,10 +93,10 @@ Tad Dallas
 \examples{
 #define an interaction matrix
 data(TestMatrices)
-test=matrix(rbinom(400, 1, 0.3), ncol=20, nrow=20)
+intmat=TestMatrices[[7]]
 
 #determines the elements of metacommunity structure 
-ems.intmat=Metacommunity(test, method='r1', sims=100, scores=1)
+ems.intmat=Metacommunity(intmat, method='r1', sims=100, scores=1)
 
 #return results in list form
 ems.intmat
