@@ -1,10 +1,8 @@
-Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = TRUE, 
-                          allow.empty = FALSE, binary = TRUE, .progressBar = FALSE) 
-{
+Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = TRUE, allow.empty = FALSE, 
+                          binary = TRUE, .progressBar = FALSE) {
   if (order == TRUE) {
     mat = OrderMatrix(comm, scores = scores, binary = binary)
-  }
-  else {
+  }  else {
     mat = comm
   }
   nulls = NullMaker(mat, sims = sims, method = method, allow.empty = allow.empty, .progressBar = .progressBar)
@@ -20,8 +18,7 @@ Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = 
         if (temp[1] %in% tempmin:tempmax) {
           ret = rbind(ret, as.vector(temp))
         }
-      }
-      else {
+      } else {
         temp = temp[which(temp[, 1] %in% tempmin:tempmax), 
                     ]
         ret = rbind(ret, temp)
@@ -36,8 +33,7 @@ Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = 
         if (temp[1] %in% tempmin:tempmax) {
           ret = rbind(ret, as.vector(temp))
         }
-      }
-      else {
+      } else {
         temp = temp[which(temp[, 2] %in% tempmin:tempmax), 
                     ]
         ret = rbind(ret, temp)
@@ -63,8 +59,7 @@ Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = 
       temp = web[i, ]
       if (sum(temp) < 2) {
         break
-      }
-      else {
+      }  else {
         web[i, min(which(temp == 1)):max(which(temp == 
                                                  1))] <- 1
       }
@@ -73,8 +68,7 @@ Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = 
       temp = web[, j]
       if (sum(temp) < 2) {
         web[, j] = temp
-      }
-      else {
+      } else {
         first = min(which(temp == 1))
         last = max(which(temp == 1))
         web[first:last, j] <- 1

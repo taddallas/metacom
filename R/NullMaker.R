@@ -3,7 +3,7 @@ NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, scores 
   if(.progressBar == TRUE) pb = txtProgressBar(min = 0, max = sims, style = 3)
   
   #generate null matrices
-  nm = nullmodel(x = comm, method = method)
+  nm = nullmodel(comm, method = method)
   sm = simulate(nm, nsim = sims)
   sm.list = lapply(seq(dim(sm)[3]), function(i) sm[, , i]) 
   
@@ -14,7 +14,7 @@ NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, scores 
     flag = FALSE
     
     #remove matrices with empty rows or cols
-    sm.list = lapply(sm.list, function(i) if(any(colSums(i) == 0) | any(rowSums(i) == 0)) NULL else i)
+    sm.list = if(allow.empty == FALSE) lapply(sm.list, function(i) if(any(colSums(i) == 0) | any(rowSums(i) == 0)) NULL else i) 
     sm.list[sapply(sm.list,is.null)] = NULL
     
     if(.progressBar == TRUE)  setTxtProgressBar(pb, length(sm.list))
