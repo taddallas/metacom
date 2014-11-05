@@ -1,12 +1,11 @@
 
-Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = TRUE, allow.empty = FALSE, 
-                          binary = TRUE, .progressBar = FALSE) {
+Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = TRUE, allow.empty = FALSE,           binary = TRUE){
   if (order == TRUE) {
     mat = OrderMatrix(comm, scores = scores, binary = binary)
   }  else {
     mat = comm
   }
-  nulls = NullMaker(mat, sims = sims, method = method, allow.empty = allow.empty, .progressBar=.progressBar)
+  nulls = NullMaker(mat, sims = sims, method = method, allow.empty = allow.empty)
   coherence <- function(web) {
     zeros = which(web == 0, arr.ind = TRUE)
     ret = matrix(0, ncol = 2)

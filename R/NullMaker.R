@@ -1,51 +1,48 @@
-NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, scores = 1, allow.empty = FALSE, .progressBar = TRUE) {
-  
-  if(.progressBar == TRUE) pb = txtProgressBar(min = 0, max = sims, style = 3)
-  
-  #generate null matrices
-  nm = nullmodel(comm, method = method)
-  sm = simulate(nm, nsim = sims)
-  sm.list = lapply(seq(dim(sm)[3]), function(i) sm[, , i]) 
-  
-  if(.progressBar == TRUE & allow.empty == TRUE) setTxtProgressBar(pb, length(sm.list))
-  
-  if(allow.empty == FALSE) {
-    
-    flag = FALSE
-    
-    #remove matrices with empty rows or cols
-    sm.list = if(allow.empty == FALSE) lapply(sm.list, function(i) if(any(colSums(i) == 0) | any(rowSums(i) == 0)) NULL else i) 
-    sm.list[sapply(sm.list,is.null)] = NULL
-    
-    if(.progressBar == TRUE)  setTxtProgressBar(pb, length(sm.list))
-    
-    while(flag == FALSE) {
-      
-      if(length(sm.list) == sims) flag = TRUE else {
-        
-        #generate extra matrices
-        spares = simulate(nm, nsim = sims/10)
-        spares.list = lapply(seq(dim(spares)[3]), function(i) spares[, , i])
-        spares.list = lapply(spares.list, function(i) if(any(colSums(i) == 0) | any(rowSums(i) == 0)) NULL else i)
-        spares.list[sapply(spares.list,is.null)] = NULL
-        
-        #replace in original sm object 
-        sm.list = append(sm.list, spares.list)
-        
-        if(.progressBar == TRUE & length(sm.list) <= sims)  setTxtProgressBar(pb, length(sm.list))
-        
-        if(length(sm.list) >= sims) {
-          sm.list=sm.list[1:1000]
-          if(.progressBar == TRUE)  setTxtProgressBar(pb, length(sm.list))
-          flag = TRUE }
-      }
-    }
-  }
-  
-  #Run ordination
-  if(ordinate == TRUE) sm.list = lapply(sm.list, OrderMatrix, scores = scores) 
-  
-  return(sm.list)
-  
+NullMaker=function (comm, sims = 1000, method = "r1", ordinate=TRUE, scores=1, allow.empty = FALSE){	
+
+null <- nullmodel(comm, method)
+nizzles <- simulate(null, nsim=sims)
+
+getMats=function(nizzles=nizzles, comm=comm){
+	mats=list()
+	breaks=seq(0, length(as.vector(nizzles)), by=length(comm))
+	for(i in 1:(length(breaks)-1)){
+		dat=as.vector(nizzles)[(breaks[i]+1):breaks[i+1]]
+		mats[[i]]=matrix(dat, ncol=ncol(comm), nrow=nrow(comm))
+		}
+	return(mats)
 }
+
+replaceEmpty=function(getMatobject, null=null, sims=sims){	
+	remove=vector()
+		for(i in 1:length(getMatobject)){
+		if(any(colSums(getMatobject[[i]])==0) | any(rowSums(getMatobject[[i]]) == 0)){remove[i]=1}else{remove[i]=0}}
+
+	if(sum(remove)==0){return(getMatobject)
+	}else{getMatobject=getMatobject[which(remove==0)]}
+
+	ret=getMatobject
+	while(length(ret) < sims){
+		spares = simulate(null, nsim = sims/10)
+		sparemats=getMats(nizzles = spares, comm = comm)	
+		rspare=vector()	
+		for(i in 1:length(sparemats)){
+			if(any(colSums(sparemats[[i]])==0) | any(rowSums(sparemats[[i]]) == 0)){rspare[i]=1}else{rspare[i]=0}}
+		if(sum(rspare)>0){sparemats=sparemats[which(rspare == 0)]}
+		ret=c(ret, sparemats)
+	}
+return(ret[1:sims])
+}
+
+mats=getMats(nizzles, comm=comm)
+
+  if(allow.empty == FALSE){
+		rmats=replaceEmpty(mats, null, sims)}
+	if(allow.empty == TRUE){rmats = mats}
+
+	if(ordinate==TRUE){rmats=lapply(rmats, OrderMatrix, scores=scores)}
+
+return(rmats)
+}
+
 

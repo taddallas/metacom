@@ -29,7 +29,7 @@ The 'metacom' package is partially adapted from previous Matlab code written by 
 \author{
 Tad Dallas 
 
-Tad Dallas <tad.dallas@drakeresearchlab.com>}
+Tad Dallas <tdallas@uga.edu>}
 
 \references{
 

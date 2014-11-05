@@ -1,4 +1,4 @@
-IdentifyStructure=function(metacom.obj) {
+identifyStructure=function(metacom.obj) {
   #Coherence
   if(as.numeric(t(metacom.obj$Coherence)[,3]) >= 0.05) "Random" else
     if(as.numeric(t(metacom.obj$Coherence)[,1]) < as.numeric(t(metacom.obj$Coherence)[,4]) & 
