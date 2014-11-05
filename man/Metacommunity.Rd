@@ -47,6 +47,9 @@ logical argument indicating whether to ordinate the community matrix
 based on abundance or binary (default) data.
 }
 
+ \item{.progressBar = T}{
+Graphical progress bar is displayed for \code{NullMaker}.
+}
 
 }
 
@@ -59,6 +62,8 @@ If 'order' is FALSE, the interaction matrix is not ordinated, allowing the user 
 }
 
 \note{This function may take awhile to finish as a result of the creation of null matrices. If you are running multiple interaction matrices, the code can be parallelized using the 'snow' package.}
+
+\note{The progress bar displays for \code{NullMaker} function only. Large matrices for coherence calculations may cause a longer delay in between when the bar is finished and when the function is actually finished running.}
 
 
 \value{

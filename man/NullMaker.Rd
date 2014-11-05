@@ -33,6 +33,9 @@ Axis scores to ordinate matrix. 1: primary axis scores (default) 2: secondary ax
 		\item{allow.empty}{
 logical argument indicating whether to allow null matrices to have empty rows or columns
 }
+  	\item{.progressBar = T}{
+Graphical progress bar is displayed.
+}
 
 }
 
