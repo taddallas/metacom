@@ -12,8 +12,7 @@ Plotting of site-by-species interaction matrices
 
 \usage{
 Imagine(comm, col=c(0,1), ordinate=TRUE, scores=1, fill=TRUE, xlab='Species', 
-ylab='Site', yline=2, xline=2, sitenames=rownames(comm), 
-speciesnames=colnames(comm), binary=TRUE)}
+ylab='Site', yline=2, xline=2, sitenames=rownames(comm), speciesnames=colnames(comm), binary=TRUE)}
 
 
 
