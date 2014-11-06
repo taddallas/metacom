@@ -34,7 +34,7 @@ Ouputs a classification of the metacommunity.
 
 
 \author{
-John Lefcheck
+Jon Lefcheck
 }
 
 \note{
@@ -44,15 +44,12 @@ Quasi structures, as well as 'random' and 'Gleasonian' structures, may not stric
 
 
 \examples{
-# Define an interaction matrix
+# Define interaction matrices
 data(TestMatrices)
-pres3c=TestMatrices[[6]]
 
-# Analyze metacommunity
-pres3c.metacom=Metacommunity(pres3c, sims=10, method='r1')
-
-# Identify the structure
-IdentifyStructure(pres3c.metacom)
+# Analyze metacommunity & Identify the structure
+metacom.list = lapply(TestMatrices[-1], function(i) Metacommunity(i))
+lapply(metacom.list, IdentifyStructure)
 
 }
 
