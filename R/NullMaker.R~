@@ -1,4 +1,4 @@
-NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, scores = 1, allow.empty = FALSE, progressBar = FALSE) {
+NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, scores = 1, allow.empty = FALSE, progressBar = TRUE) {
   
   if(progressBar == TRUE) pb = txtProgressBar(min = 0, max = sims, style = 3)
   

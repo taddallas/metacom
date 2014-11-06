@@ -1,28 +1,36 @@
-\name{Coherence}
-\alias{Coherence}
+\name{Turnover}
+\alias{Turnover}
 
 \title{
-Determines coherence
-}
-\description{
-This function determines the number of embedded absences in an interaction matrix, and compares this value against null simulated matrices. Species ranges should be coherent along the ordination axis, as this axis represents a latent environmental gradient. A negative value of coherence (empirical matrix has more embedded absences than null matrices) indicates a 'checkerboard' pattern (Leibold & Mikkelson 2002). Nonsignificance has been historically interpreted as being indicative of a 'random' pattern, though this may be seen as accepting the null hypothesis, as nonsignificance cannot be used to infer a process.
+Determines species turnover
 }
 
-\usage{
-Coherence(comm, method = "r1", sims = 1000, scores = 1, 
-order=TRUE, allow.empty=FALSE, binary=TRUE, progressBar=FALSE)
+\description{
+'Turnover' is a function that assesses species turnover from the range perspective (traditional method). 
+
+If the 'community' perspective is desired, simply transpose the matrix before analysis using the transpose function ('t()'), but make sure you understand the implications of this action, as the interpretation of the output changes dramatically.
 }
+
+
+\usage{
+Turnover(comm, method = "r1", sims = 1000, scores = 1, 
+order=TRUE, allow.empty=FALSE, binary=TRUE)
+}
+
 
 \arguments{
   \item{comm}{
 community data in the form of a presence absence matrix
 }
+
   \item{method}{
-null model randomization method used by 'nullmaker'. See details below (and the help file of fucntion 'nullmaker') for more information. 
+null model randomization method used by 'nullmaker'. See details. 
 }
+
   \item{sims}{
 number of simulated null matrices to use in analysis
 }
+
   \item{scores}{
 axis scores to ordinate matrix. 1: primary axis scores (default) 2: secondary axis scores
 }
@@ -39,10 +47,6 @@ logical argument indicating whether to allow null matrices to have empty rows or
 logical argument indicating whether to ordinate the community matrix based on abundance or binary (default) data.
 }
 
- \item{progressBar}{
-Logical. Prints a graphical progress bar that tracks the creation of null matrices. Useful for conservative null models on large and/or sparse data.
-}
-
 }
 
 
@@ -55,9 +59,10 @@ This function can either be used as a standalone, or can be used through the 'me
 }
 
 
+
 \value{
-\item{Coherence}{the number of embedded absences within the interaction matrix}
-  
+\item{turnover}{species turnover, quantified as the number of replacements across species ranges}
+
 \item{z}{the z statistic comparing observed turnover against species turnover of null matrices}
 
 \item{pval}{p-value from a z-test to assess significance of species turnover relative to null matrices}
@@ -67,6 +72,7 @@ This function can either be used as a standalone, or can be used through the 'me
 \item{simulated variance}{variance in the number of replacements of simulated null matrices}
 
 \item{method}{randomization method to create null matrices}
+
 }
 
 
@@ -81,18 +87,20 @@ Wright, D.H., Patterson, B.D., Mikkelson, G.M., Cutler, A. & Atmar, W. (1998). A
 Tad Dallas
 }
 
+
+
 \examples{
 #define an interaction matrix
 data(TestMatrices)
-intmat=TestMatrices[[7]]
+intmat=TestMatrices[[3]]
 
-#determine coherence of interaction matrix
-coh.intmat=Coherence(intmat, method='r1', sims=100, scores=1, order=TRUE, binary=TRUE)
+#determine species turnover
+turnover.intmat=Turnover(intmat, method='r1', sims=100, scores=1, binary=TRUE)
 
-#return results 
-coh.intmat
+#return results as a list
+turnover.intmat
+
 }
-
 
 
 

@@ -14,7 +14,7 @@ If the 'community' perspective is desired, simply transpose the matrix before an
 
 \usage{
 Turnover(comm, method = "r1", sims = 1000, scores = 1, 
-order=TRUE, allow.empty=FALSE, binary=TRUE)
+order=TRUE, allow.empty=FALSE, binary=TRUE, progressBar=FALSE)
 }
 
 
@@ -47,6 +47,10 @@ logical argument indicating whether to allow null matrices to have empty rows or
 logical argument indicating whether to ordinate the community matrix based on abundance or binary (default) data.
 }
 
+ \item{progressBar}{
+Logical. Prints a graphical progress bar that tracks the creation of null matrices. Useful for conservative null models on large and/or sparse data.
+}
+
 }
 
 
@@ -72,6 +76,7 @@ This function can either be used as a standalone, or can be used through the 'me
 \item{simulated variance}{variance in the number of replacements of simulated null matrices}
 
 \item{method}{randomization method to create null matrices}
+
 
 }
 
