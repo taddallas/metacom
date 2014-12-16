@@ -4,7 +4,7 @@ Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = 
   }else{
     mat = comm}
 
-  nulls = NullMaker(mat, sims = sims, method = method, allow.empty = allow.empty, progressBar=progressBar)
+  nulls = NullMaker(mat, sims = sims, method = method, allow.empty = allow.empty, progressBar=progressBar, ordinate=order)
 
   coherence <- function(web) {
     zeros = which(web == 0, arr.ind = TRUE)
