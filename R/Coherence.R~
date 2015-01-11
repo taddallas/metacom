@@ -1,4 +1,4 @@
-Coherence <-function(comm, method='r1', sims=1000, scores=1, order=TRUE, allow.empty=FALSE, binary=TRUE, .progressBar=FALSE){
+Coherence <-function(comm, method='r1', sims=1000, scores=1, order=TRUE, allow.empty=FALSE, binary=TRUE, progressBar=FALSE){
 
 coherence <-function(web){
 	zeros=which(web==0, arr.ind=TRUE)	
@@ -39,7 +39,7 @@ if(order==TRUE){comm=OrderMatrix(comm, scores=scores, binary=binary)
 }else{comm=comm}
 
 	statistic=coherence(comm)
-	nulls=NullMaker(comm=comm, sims=sims, method=method, ordinate=order, allow.empty=allow.empty, .progressBar=.progressBar)
+	nulls=NullMaker(comm=comm, sims=sims, method=method, ordinate=order, allow.empty=allow.empty, progressBar=progressBar)
 
 	simstat=as.numeric(lapply(nulls,coherence))
 	varstat=sd(simstat)
