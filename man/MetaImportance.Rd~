@@ -14,7 +14,7 @@ Permutes the interactions of each row in an interaction matrix to determine the 
 \usage{
 MetaImportance(comm, margin=1, scores = 1, method = "r00",
  sims = 1000, order = TRUE, allow.empty=TRUE, binary = TRUE, 
- verbose = FALSE, modularity=FALSE, c = sum(dim(comm)), nstarts= 100)
+ verbose = TRUE, modularity=FALSE, c = sum(dim(comm)), nstarts= 100)
 }
 
 
@@ -104,7 +104,7 @@ Tad Dallas
 \examples{
 #define an interaction matrix
 data(TestMatrices)
-intMat=TestMatrices[[1]]
+intMat=TestMatrices[[5]]
 
 #determines row importance to coherence, turnover, boundary clumping
 ems.intmat=MetaImportance(intMat, method='r00', sims=10, scores=1, verbose=TRUE, modularity=FALSE)

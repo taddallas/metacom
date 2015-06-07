@@ -1,4 +1,4 @@
-MetaImportance=function(comm, margin=1, scores = 1, method = "r00", sims = 1000, order=TRUE, allow.empty=TRUE, binary = TRUE, verbose=FALSE, modularity=FALSE, c=sum(dim(comm)), nstarts=100){
+MetaImportance=function(comm, margin=1, scores = 1, method = "r00", sims = 1000, order=TRUE, allow.empty=TRUE, binary = TRUE, verbose=TRUE, modularity=FALSE, c=sum(dim(comm)), nstarts=100){
 
  #To order or not to order
  if(order == TRUE){mat = OrderMatrix(comm, scores = scores, binary = binary)
