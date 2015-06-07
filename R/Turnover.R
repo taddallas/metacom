@@ -1,4 +1,4 @@
-Turnover <-function(comm ,method="r1" ,sims=1000 ,scores=1, order=TRUE, allow.empty=FALSE, binary=TRUE, progressBar=FALSE){
+Turnover <-function(comm ,method="r1" ,sims=1000 ,scores=1, order=TRUE, allow.empty=FALSE, binary=TRUE, verbose=FALSE){
 
  if(order == TRUE){comm = OrderMatrix(comm, scores = scores, binary = binary)}
 

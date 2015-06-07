@@ -1,13 +1,13 @@
-NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, scores = 1, allow.empty = FALSE, progressBar = FALSE) {
+NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, scores = 1, allow.empty = FALSE, verbose = FALSE) {
   
-  if(progressBar == TRUE) pb = txtProgressBar(min = 0, max = sims, style = 3)
+  if(verbose == TRUE) pb = txtProgressBar(min = 0, max = sims, style = 3)
   
   #generate null matrices
   nm = nullmodel(comm, method = method)
   sm = simulate(nm, nsim = sims)
   sm.list = lapply(seq(dim(sm)[3]), function(i) sm[, , i]) 
   
-  if(progressBar == TRUE & allow.empty == TRUE) setTxtProgressBar(pb, length(sm.list))
+  if(verbose == TRUE & allow.empty == TRUE) setTxtProgressBar(pb, length(sm.list))
   
   if(allow.empty == FALSE) {
     
@@ -17,7 +17,7 @@ NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, scores 
     sm.list = if(allow.empty == FALSE) lapply(sm.list, function(i) if(any(colSums(i) == 0) | any(rowSums(i) == 0)) NULL else i) 
     sm.list[sapply(sm.list,is.null)] = NULL
     
-    if(progressBar == TRUE)  setTxtProgressBar(pb, length(sm.list))
+    if(verbose == TRUE)  setTxtProgressBar(pb, length(sm.list))
     
     while(flag == FALSE) {
       
@@ -32,11 +32,11 @@ NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, scores 
         #replace in original sm object 
         sm.list = append(sm.list, spares.list)
         
-        if(progressBar == TRUE & length(sm.list) <= sims)  setTxtProgressBar(pb, length(sm.list))
+        if(verbose == TRUE & length(sm.list) <= sims)  setTxtProgressBar(pb, length(sm.list))
         
         if(length(sm.list) >= sims) {
           sm.list=sm.list[1:sims]
-          if(progressBar == TRUE)  setTxtProgressBar(pb, length(sm.list))
+          if(verbose == TRUE)  setTxtProgressBar(pb, length(sm.list))
           flag = TRUE }
       }
     }

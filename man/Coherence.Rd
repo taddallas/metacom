@@ -10,7 +10,7 @@ This function determines the number of embedded absences in an interaction matri
 
 \usage{
 Coherence(comm, method = "r1", sims = 1000, scores = 1, 
-order=TRUE, allow.empty=FALSE, binary=TRUE, progressBar=FALSE)
+order=TRUE, allow.empty=FALSE, binary=TRUE, verbose=FALSE)
 }
 
 \arguments{
@@ -39,7 +39,7 @@ logical argument indicating whether to allow null matrices to have empty rows or
 logical argument indicating whether to ordinate the community matrix based on abundance or binary (default) data.
 }
 
- \item{progressBar}{
+ \item{verbose}{
 Logical. Prints a graphical progress bar that tracks the creation of null matrices. Useful for conservative null models on large and/or sparse data.
 }
 

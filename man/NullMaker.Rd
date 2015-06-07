@@ -9,7 +9,7 @@ Creates null matrices based on the constraints of the null model algorithm ('met
 }
 
 \usage{
-NullMaker(comm, sims = 1000, method = "r1", ordinate=TRUE, scores=1, allow.empty = FALSE, progressBar=FALSE)
+NullMaker(comm, sims = 1000, method = "r1", ordinate=TRUE, scores=1, allow.empty = FALSE, verbose=FALSE)
 }
 
 \arguments{
@@ -35,7 +35,7 @@ logical argument indicating whether to allow null matrices to have empty rows or
 }
 
 
- \item{progressBar}{
+ \item{verbose}{
 Logical. Prints a graphical progress bar that tracks the creation of null matrices. Useful for conservative null models on large and/or sparse data.
 }
 }

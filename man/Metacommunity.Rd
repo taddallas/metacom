@@ -13,7 +13,7 @@ Analysis of the Elements of Metacommunity Structure
 
 \usage{
 Metacommunity(comm, scores=1, method = "r1", sims = 1000, 
-order=TRUE, allow.empty=FALSE, binary=TRUE, progressBar=FALSE)
+order=TRUE, allow.empty=FALSE, binary=TRUE, verbose=FALSE)
 }
 
 
@@ -47,7 +47,7 @@ logical argument indicating whether to ordinate the community matrix
 based on abundance or binary (default) data.
 }
 
- \item{progressBar}{
+ \item{verbose}{
 Logical. Prints a graphical progress bar that tracks the creation of null matrices. Useful for conservative null models on large and/or sparse data.
 }
 }
