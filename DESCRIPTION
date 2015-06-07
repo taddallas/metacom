@@ -7,7 +7,9 @@ Author: person("Tad", "Dallas", role = c("aut", "cre"),
     email = "tdallas@uga.edu")
 Imports: devtools, vegan, lattice, testthat
 Maintainer: Tad Dallas <tdallas@uga.edu>
-Description: Functions to analyze coherence, boundary clumping, and turnover following the pattern-based metacommunity analysis of Leibold and Mikkelson 2002 
+Description: Functions to analyze coherence, boundary clumping, and turnover following the pattern-based metacommunity analysis of Leibold and Mikkelson 2002. The package also includes functions
+to visualize ecological networks, and to calculate modularity as a replacement to boundary
+clumping.
 LazyLoad: yes
 LazyData: yes
 License: GPL-2
