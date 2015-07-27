@@ -4,8 +4,7 @@
 
 
 ### Install
-Either install from [CRAN](http://cran.r-project.org/web/packages/metacom/index.html), or directly from GitHub using the code below. Note that GitHub is the development version of the package, which may or may not differ from what's on CRAN. Currently, the GitHub version relies on the development version of `vegan`.
-The download instructions below also download the new `vegan`, which is a solid upgrade. 
+Either install from [CRAN]( http://cran.r-project.org/package=metacom), or directly from GitHub using the code below. Note that GitHub is the development version of the package, which may or may not differ from what's on CRAN. 
 
 
 ```r
@@ -16,7 +15,6 @@ install.packages("metacom")
 ```r
 # From GitHub
 # install.packages("devtools")
-devtools::install_github("vegandevs/vegan")
 devtools::install_github("taddallas/metacom")
 library("metacom")
 ```

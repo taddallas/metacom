@@ -16,13 +16,13 @@ Turnover <-function(comm ,method="r1" ,sims=1000 ,scores=1, order=TRUE, allow.em
   return(sum(D))
  }
 
- statistic <- turnover(comm)
- nulls <- NullMaker(comm = comm, sims = sims, method = method, 
+ statistic = turnover(comm)
+ nulls = NullMaker(comm = comm, sims = sims, method = method, 
         allow.empty = allow.empty, verbose = verbose, ordinate=order)
- simstat <- as.numeric(lapply(nulls,turnover))
- varstat <- sd(simstat)
- z <- (mean(simstat)-statistic)/(varstat)
- pval <- 2*pnorm(-abs(z))
+ simstat=as.numeric(lapply(nulls,turnover))
+ varstat=sd(simstat)
+ z = (mean(simstat)-statistic)/(varstat)
+ pval=2*pnorm(-abs(z))
  return(list(Turnover=statistic, z=z,pval=pval,SimulatedMean=mean(simstat),SimulatedVariance=varstat,Method=method))
 	
 }

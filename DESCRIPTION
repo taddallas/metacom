@@ -1,13 +1,15 @@
 Package: metacom
 Type: Package
 Title: Analysis of the 'Elements of Metacommunity Structure' 
-Version: 1.4.1
-Date: 2013-12-10
+Version: 1.4.4
+Date: 2015-7-26
 Author: Tad Dallas
-Depends: vegan
+Depends: vegan (>= 2.2-1)
 Imports: devtools, lattice, testthat
 Maintainer: Tad Dallas <tdallas@uga.edu>
 Description: Functions to analyze coherence, boundary clumping, and turnover following the pattern-based metacommunity analysis of Leibold and Mikkelson 2002. The package also includes functions to visualize ecological networks, and to calculate modularity as a replacement to boundary clumping.
 LazyLoad: yes
 LazyData: yes
 License: GPL-2
+BugReports: https://github.com/taddallas/metacom/issues
+URL: https://github.com/taddallas/metacom
