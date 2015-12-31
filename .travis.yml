@@ -1,6 +1,5 @@
 language: c
-
-sudo: false
+sudo: required
 
 before_install:
 - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
@@ -13,4 +12,4 @@ install:
 script: ./travis-tool.sh run_tests
 
 on_failure:
-  - ./travis-tool.sh dump_logs 
+  - ./travis-tool.sh dump_logs
