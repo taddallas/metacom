@@ -10,8 +10,8 @@ before_install:
 install:
   - ./travis-tool.sh install_deps
 
-r_packages:
-  - covr
+r_github_packages:
+  - jimhester/covr
 
 after_success:
   - Rscript -e 'library(covr); codecov()'
