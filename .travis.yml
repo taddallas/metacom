@@ -17,7 +17,7 @@ script:
   - ./travis-tool.sh run_tests
 
 after_success:
-  - Rscript -e 'library(covr); codecov()'
-  
+  - Rscript -e 'library(covr); codecov(token = "05a70b7e-5496-4099-bab8-8b89008cab63" )'
+
 on_failure:
   - ./travis-tool.sh dump_logs
