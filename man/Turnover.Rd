@@ -32,7 +32,7 @@ creation of null matrices. Useful for conservative null models on large
 and/or sparse data.}
 }
 \value{
-A vector containing the test statistic (turnover), z-value (z), p-value (pval), mean (simulatedMean) and variance (simulatedVariance) of simulations, and randomization method (method)
+A data.frame containing the test statistic (turnover), z-value (z), p-value (pval), mean (simulatedMean) and variance (simulatedVariance) of simulations, and randomization method (method)
 }
 \description{
 'Turnover' is a function that assesses species turnover from the range
@@ -61,7 +61,8 @@ relevant characteristics.
 This function can either be used as a standalone, or can be used through the
 'metacommunity()' function, which determines all 3 elements of metacommunity
 structure (coherence, boundary clumping, & turnover) (Leibold & Mikkelson
-2002)
+2002). The turnover metric used here is equivalent to the number of checkerboard
+units community with species ranges (range perspective) filled in
 }
 \examples{
 

@@ -25,7 +25,8 @@
 #' This function can either be used as a standalone, or can be used through the
 #' 'metacommunity()' function, which determines all 3 elements of metacommunity
 #' structure (coherence, boundary clumping, & turnover) (Leibold & Mikkelson
-#' 2002)
+#' 2002). The turnover metric used here is equivalent to the number of checkerboard
+#' units community with species ranges (range perspective) filled in
 #'
 #' @param comm community data in the form of a presence absence matrix
 #' @param method null model randomization method used by 'nullmaker'. See
@@ -42,7 +43,7 @@
 #' @param verbose Logical. Prints a graphical progress bar that tracks the
 #' creation of null matrices. Useful for conservative null models on large
 #' and/or sparse data.
-#' @return A vector containing the test statistic (turnover), z-value (z), p-value (pval), mean (simulatedMean) and variance (simulatedVariance) of simulations, and randomization method (method)
+#' @return A data.frame containing the test statistic (turnover), z-value (z), p-value (pval), mean (simulatedMean) and variance (simulatedVariance) of simulations, and randomization method (method)
 #'
 #' @author Tad Dallas
 #' @export
@@ -71,13 +72,6 @@ Turnover <-function(comm ,method="r1" ,sims=1000 ,scores=1, order=TRUE, allowEmp
  }
 
  turnover <- function(web){
-  for(j in 1:dim(web)[2]){
-   temp = web[, j]
-   if(sum(temp) > 2){
-    bnds <- range(which(temp==1))
-    web[(bnds[1]:bnds[2]), j] <- 1
-   }
-  }
   D <- designdist(web, method = "(A-J)*(B-J)", terms = "minimum")
   return(sum(D))
  }
@@ -89,5 +83,5 @@ Turnover <-function(comm ,method="r1" ,sims=1000 ,scores=1, order=TRUE, allowEmp
  varstat <- sd(simstat)
  z <- (mean(simstat)-statistic)/(varstat)
  pval <- 2*pnorm(-abs(z))
- return(c(turnover=statistic, z=z,pval=pval, simulatedMean=mean(simstat), simulatedVariance=varstat, method=method))
+ return(data.frame(turnover=statistic, z=z,pval=pval, simulatedMean=mean(simstat), simulatedVariance=varstat, method=method))
 }

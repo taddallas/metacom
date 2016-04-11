@@ -64,18 +64,10 @@ BoundaryClump <-function(comm, order=TRUE, scores=1, binary=TRUE){
 	for(i in 1:ncol(comm)) {
 		comm[min(which(comm[,i] == 1)):max(which(comm[,i] == 1)), i] <- 1
 	}
-	ComBnd <- rep(0, ncol(comm))
-#for each row of the matrix...
-	for(i in 1:nrow(comm)){
-# identify which rows have an occurrence
-		ind1 <- which(comm[i,] == 1)
-# for each column...
-		for(j in 1:ncol(comm)){
-# find how often range edges overlap
-		 if(min(ind1) == j) {ComBnd[j] <- ComBnd[j]+1}
-		if(max(ind1) == j) {ComBnd[j] <- ComBnd[j]+1}
-		}
-	}
+
+	rngs <- apply(comm,1, function(x){c(min(which(x ==1)), max(which(x==1)))})
+	ComBnd <- as.vector(table(factor(rngs, levels=1:ncol(comm))))
+
 	TotComBnd <- (nrow(comm)*2) - ComBnd[1] - ComBnd[ncol(comm)]
 	ExpComBnd <- TotComBnd/(ncol(comm) - 2)
 	df <- -1

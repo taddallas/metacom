@@ -39,7 +39,7 @@
 #'
 #' #define an interaction matrix
 #' data(TestMatrices)
-#' pres3c=TestMatrices[[6]]
+#' pres3c <- TestMatrices[[6]]
 #'
 #' #obtain an ordinated interaction matrix
 #' OrderMatrix(pres3c, scores = 1, outputScores = FALSE)

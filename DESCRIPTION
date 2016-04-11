@@ -2,7 +2,7 @@ Package: metacom
 Type: Package
 Title: Analysis of the 'Elements of Metacommunity Structure'
 Version: 1.4.4
-Date: 2015-7-26
+Date: 2016-4-11
 Author: Tad Dallas
 Depends:
     vegan (>= 2.2-1)
