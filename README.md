@@ -2,9 +2,11 @@
 
 [![Build Status](https://travis-ci.org/taddallas/metacom.png?branch=master)](https://travis-ci.org/taddallas/metacom)
 
+[![Downloads](http://cranlogs.r-pkg.org/badges/metacom)](http://cranlogs.r-pkg.org/badges/metacom)
+
 
 ### Install
-Either install from [CRAN]( http://cran.r-project.org/package=metacom), or directly from GitHub using the code below. Note that GitHub is the development version of the package, which may or may not differ from what's on CRAN. 
+Either install from [CRAN]( http://cran.r-project.org/package=metacom), or directly from GitHub using the code below. Note that GitHub is the development version of the package, which may or may not differ from what's on CRAN.
 
 
 ```r
@@ -44,7 +46,7 @@ Definition of a metacommunity:
      metacommunity structure. This is performed by ordinating
      site-by-species interaction matrices and calculating three
      metrics; coherence, boundary clumping & turnover.
-     
+
 The Elements of Metacommunity Structure Framework:
 
      The metacom package calculates these three metrics; coherence is
@@ -60,8 +62,8 @@ The Elements of Metacommunity Structure Framework:
      not have to be used strictly in the Leibold and Mikkelson 2002
      framework.
 
-A cautionary note: 
-    
+A cautionary note:
+
     I caution the user to be aware that the creation of null matrices
      can be performed to allow (or not allow) sites to be empty, or
      species to not exist at any site (i.e. column sums and/or row sums
@@ -74,8 +76,7 @@ A cautionary note:
      impossible in some situations. These situations occur when you
      have a very sparse interaction matrix, and is also influenced by
      null model algorithm ('method') that you choose.
-  
-  
-The 'metacom' package is partially adapted from previous Matlab
-code written by Christopher Higgins (available [here](http://faculty.tarleton.edu/higgins/metacommunity-structure.html)) and relies on many functions in the 'vegan' package (Oksanen et al. 2012). 
 
+
+The 'metacom' package is partially adapted from previous Matlab
+code written by Christopher Higgins (available [here](http://faculty.tarleton.edu/higgins/metacommunity-structure.html)) and relies on many functions in the 'vegan' package (Oksanen et al. 2012).
