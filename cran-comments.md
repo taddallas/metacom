@@ -1,12 +1,12 @@
 ## Test environments
-* ubuntu 14.04 (on travis-ci), R 3.1.2
+
+* ubuntu 14.04 (on travis-ci), R 3.2.4
 * winbuilder (devel and release)
 
 ## R CMD check results
+
 There were no ERRORs or WARNINGs.
 
-There was 1 NOTE:
+## Other comments
 
-* checking top-level files ... NOTE
-Non-standard file/directory found at top level:
-  ‘cran-comments.md’
+The maintainer of inpdfr (Francois Rebaudo) has been informed about my changes, but hasn't yet submitted an update to CRAN. 

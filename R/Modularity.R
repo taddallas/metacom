@@ -39,6 +39,8 @@
 #' @param nstarts number of starts. Default is 100. More will both slow the
 #' function down, and increase the likelihood of converging on the true
 #' modularity value.
+#' @param returnModules logical argument indicating whether to return a vector of module IDs
+#'
 #' @return  A vector containing Barber's modularity statistic (Q), the z statistic comparing observed modularity against null matrices (z), p-value (pval), and mean (simulatedMean) and variance (simulatedVariance) from null model simulations
 #'
 #' @author Tomlin Pulliam and Tad Dallas
@@ -68,7 +70,8 @@
 #' #return results
 #' mod.intmat
 #'
-Modularity <- function(comm, method='tswap', sims=1000, scores=1,  order=TRUE, c = length(comm), nstarts=100){
+Modularity <- function(comm, method='tswap', sims=1000, scores=1,  order=TRUE, c = length(comm),
+    nstarts=100, returnModules=FALSE){
 
  #suport functions
  reduce <- function(v){
@@ -160,7 +163,7 @@ Modularity <- function(comm, method='tswap', sims=1000, scores=1,  order=TRUE, c
  }
 
  #actual modularity calculation
- getQ <- function(comm){
+ getQ <- function(comm, mods=returnModules){
    n <- sum(dim(comm))
    best.modules <- rep(1,n)
    best.modules <- maximizeQ(comm, best.modules, c)
@@ -175,15 +178,22 @@ Modularity <- function(comm, method='tswap', sims=1000, scores=1,  order=TRUE, c
        best.Q <- Q
      }
    }
-   ret <- list(Q=best.Q)
+   if(mods){ret <- list(Q=best.Q, modules=best.modules)}
+   if(mods==FALSE){ret <- list(Q=best.Q)}
    return(ret)
  }
 
 	nulls <- NullMaker(comm=comm, sims=sims, method=method, scores=scores, ordinate=order)
-  Qemp <- getQ(comm)$Q
-	Qnull <- as.numeric(unlist(lapply(nulls, getQ)))
+   QandMods <- getQ(comm)
+   Qemp <- QandMods$Q
+	Qnull <- as.numeric(unlist(lapply(nulls, getQ, mods=FALSE)))
   varstat <- sd(Qnull)
   z <- (mean(Qnull) - Qemp) / (varstat)
   pval <- 2 * pnorm(-abs(z))
- return(c(Q = Qemp, z = z, pval = pval, simulatedMean = mean(Qnull), simulatedVariance = varstat))
+  if(returnModules==FALSE){
+    return(c(Q = Qemp, z = z, pval = pval, simulatedMean = mean(Qnull), simulatedVariance = varstat))
+  }
+  if(returnModules){
+    return(list(results = c(Q = Qemp, z = z, pval = pval, simulatedMean = mean(Qnull), simulatedVariance = varstat), modules=QandMods$modules))
+  }
 }

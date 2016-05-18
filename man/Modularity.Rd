@@ -5,7 +5,7 @@
 \title{Calculates Barber's Bipartite Modularity}
 \usage{
 Modularity(comm, method = "tswap", sims = 1000, scores = 1,
-  order = TRUE, c = length(comm), nstarts = 100)
+  order = TRUE, c = length(comm), nstarts = 100, returnModules = FALSE)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}
@@ -28,6 +28,8 @@ maximum number of modules possible.}
 \item{nstarts}{number of starts. Default is 100. More will both slow the
 function down, and increase the likelihood of converging on the true
 modularity value.}
+
+\item{returnModules}{logical argument indicating whether to return a vector of module IDs}
 }
 \value{
 A vector containing Barber's modularity statistic (Q), the z statistic comparing observed modularity against null matrices (z), p-value (pval), and mean (simulatedMean) and variance (simulatedVariance) from null model simulations
