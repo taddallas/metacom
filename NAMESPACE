@@ -2,7 +2,6 @@
 
 export(BoundaryClump)
 export(Coherence)
-export(IdentifyStructure)
 export(Imagine)
 export(Metacommunity)
 export(Modularity)

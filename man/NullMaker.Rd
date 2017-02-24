@@ -5,7 +5,7 @@
 \title{Null matrix creator}
 \usage{
 NullMaker(comm, sims = 1000, method = "r1", ordinate = TRUE, scores = 1,
-  allowEmpty = FALSE, verbose = FALSE)
+  allowEmpty = FALSE, verbose = FALSE, seed = 1)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}
@@ -26,6 +26,8 @@ matrices to have empty rows or columns}
 \item{verbose}{Logical. Prints a graphical progress bar that tracks the
 creation of null matrices. Useful for conservative null models on large
 and/or sparse data.}
+
+\item{seed}{seed for simulating the null model. Null matrices should be repeatable.}
 }
 \value{
 rmats -- A list of length(sim) containing the null matrices

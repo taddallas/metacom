@@ -5,7 +5,8 @@
 \title{Analysis of the Elements of Metacommunity Structure}
 \usage{
 Metacommunity(comm, scores = 1, method = "r1", sims = 1000,
-  order = TRUE, allowEmpty = FALSE, binary = TRUE, verbose = FALSE)
+  order = TRUE, allowEmpty = FALSE, binary = TRUE, verbose = FALSE,
+  seed = 1)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}
@@ -30,6 +31,8 @@ matrix based on abundance or binary (default) data.}
 \item{verbose}{Logical. Prints a graphical progress bar that tracks the
 creation of null matrices. Useful for conservative null models on large
 and/or sparse data.}
+
+\item{seed}{seed for simulating the null model. Null matrices should be repeatable.}
 }
 \value{
 A list of length 4, containing;

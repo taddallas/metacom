@@ -5,7 +5,7 @@
 \title{Determines species turnover}
 \usage{
 Turnover(comm, method = "r1", sims = 1000, scores = 1, order = TRUE,
-  allowEmpty = FALSE, binary = TRUE, verbose = FALSE)
+  allowEmpty = FALSE, binary = TRUE, verbose = FALSE, seed = 1)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}
@@ -30,9 +30,12 @@ matrix based on abundance or binary (default) data.}
 \item{verbose}{Logical. Prints a graphical progress bar that tracks the
 creation of null matrices. Useful for conservative null models on large
 and/or sparse data.}
+
+\item{seed}{seed for simulating the null model. Null matrices should be repeatable.}
 }
 \value{
-A data.frame containing the test statistic (turnover), z-value (z), p-value (pval), mean (simulatedMean) and variance (simulatedVariance) of simulations, and randomization method (method)
+A data.frame containing the test statistic (turnover), z-value (z), p-value (pval), 
+mean (simulatedMean) and variance (simulatedVariance) of simulations, and randomization method (method)
 }
 \description{
 'Turnover' is a function that assesses species turnover from the range

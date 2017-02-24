@@ -34,6 +34,7 @@
 #' @param verbose Logical. Prints a graphical progress bar that tracks the
 #' creation of null matrices. Useful for conservative null models on large
 #' and/or sparse data.
+#' @param seed seed for simulating the null model. Null matrices should be repeatable.
 #' @return rmats -- A list of length(sim) containing the null matrices
 #' @author Tad Dallas and John Lefcheck
 #' @export
@@ -53,46 +54,53 @@
 #' nulls <- NullMaker(intmat, sims=100, method='r1')
 #'
 
-NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, scores = 1, allowEmpty = FALSE, verbose = FALSE) {
 
-  if(verbose == TRUE) pb = txtProgressBar(min = 0, max = sims, style = 3)
-
-  #generate null matrices
-  nm <- nullmodel(comm, method = method)
-  sm <- simulate(nm, nsim = sims)
-  sm.list <- lapply(seq(dim(sm)[3]), function(i) sm[, , i])
-
-  if(verbose == TRUE & allowEmpty == TRUE) setTxtProgressBar(pb, length(sm.list))
-
-  if(allowEmpty == FALSE) {
-    flag = FALSE
-    #remove matrices with empty rows or cols
-    sm.list <- if(allowEmpty == FALSE) lapply(sm.list, function(i) if(any(colSums(i) == 0) | any(rowSums(i) == 0)) NULL else i)
-    sm.list[sapply(sm.list,is.null)] = NULL
-
-    if(verbose == TRUE)  setTxtProgressBar(pb, length(sm.list))
-    while(flag == FALSE) {
-      if(length(sm.list) == sims) flag = TRUE else {
-        #generate extra matrices
-        spares <- simulate(nm, nsim = sims/10)
-        spares.list <- lapply(seq(dim(spares)[3]), function(i) spares[, , i])
-        spares.list <- lapply(spares.list, function(i) if(any(colSums(i) == 0) | any(rowSums(i) == 0)) NULL else i)
-        spares.list[sapply(spares.list,is.null)] <- NULL
-
-        #replace in original sm object
-        sm.list <- append(sm.list, spares.list)
-
-        if(verbose == TRUE & length(sm.list) <= sims)  setTxtProgressBar(pb, length(sm.list))
-
-        if(length(sm.list) >= sims) {
-          sm.list <- sm.list[1:sims]
-          if(verbose == TRUE)  setTxtProgressBar(pb, length(sm.list))
-          flag = TRUE }
-      }
+ NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, 
+    scores = 1, allowEmpty = FALSE, verbose = FALSE, seed=1){
+    if (verbose == TRUE) 
+        pb = txtProgressBar(min = 0, max = sims, style = 3)
+    nm <- nullmodel(comm, method = method)
+    sm <- simulate(nm, nsim = sims, seed=seed)
+    sm.list <- lapply(seq(dim(sm)[3]), function(i) sm[, , i])
+    if (verbose == TRUE & allowEmpty == TRUE) 
+        setTxtProgressBar(pb, length(sm.list))
+    if (allowEmpty == FALSE) {
+        flag = FALSE
+        sm.list <- if (allowEmpty == FALSE) 
+            lapply(sm.list, function(i) if (any(colSums(i) == 
+                0) | any(rowSums(i) == 0)) 
+                NULL
+            else i)
+        sm.list[sapply(sm.list, is.null)] = NULL
+        if (verbose == TRUE) 
+            setTxtProgressBar(pb, length(sm.list))
+        while (flag == FALSE) {
+            if (length(sm.list) == sims) 
+                flag = TRUE
+            else {
+                spares <- simulate(nm, nsim = sims/10)
+                spares.list <- lapply(seq(dim(spares)[3]), function(i) spares[, 
+                  , i])
+                spares.list <- lapply(spares.list, function(i) if (any(colSums(i) == 
+                  0) | any(rowSums(i) == 0)) 
+                  NULL
+                else i)
+                spares.list[sapply(spares.list, is.null)] <- NULL
+                sm.list <- append(sm.list, spares.list)
+                if (verbose == TRUE & length(sm.list) <= sims) 
+                  setTxtProgressBar(pb, length(sm.list))
+                if (length(sm.list) >= sims) {
+                  sm.list <- sm.list[1:sims]
+                  if (verbose == TRUE) 
+                    setTxtProgressBar(pb, length(sm.list))
+                  flag = TRUE
+                }
+            }
+        }
     }
-  }
-
-  #Run ordination
-  if(ordinate == TRUE) sm.list <- lapply(sm.list, OrderMatrix, scores = scores)
-  return(sm.list)
+    if (ordinate == TRUE) 
+        sm.list <- lapply(sm.list, OrderMatrix, scores = scores)
+    return(sm.list)
 }
+
+
