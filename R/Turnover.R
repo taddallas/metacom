@@ -66,9 +66,9 @@
 #' turnover.intmat <- Turnover(intmat, method='r1', sims=100, scores=1, binary=TRUE)
 #'
 
-Turnover = function (comm, method = "r1", sims = 1000, scores = 1, order = TRUE, 
-    allowEmpty = FALSE, binary = TRUE, verbose = FALSE, seed=1) 
-{
+Turnover = function (comm, method = "r1", sims = 1000, 
+  scores = 1, order = TRUE, allowEmpty = FALSE, 
+  binary = TRUE, verbose = FALSE, seed=1){
     if (order) {
         comm = OrderMatrix(comm, scores = scores, binary = binary)
     }

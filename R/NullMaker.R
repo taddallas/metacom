@@ -38,7 +38,7 @@
 #' @return rmats -- A list of length(sim) containing the null matrices
 #' @author Tad Dallas and John Lefcheck
 #' @export
-#' @seealso commsimulator(), nullmodel(), permatfull(), commsim()
+#' @seealso nullmodel(), permatfull(), commsim()
 #' @references J. Oksanen, F.G. Blanchet, R. Kindt, P. Legendre, P.R. Minchin,
 #' R.B. O'Hara, G.L. Simpson, P. Solymos, M.H.H. Stevens and H. Wagner (2012).
 #' vegan: Community Ecology Package. R package version 2.0-4.
@@ -55,8 +55,9 @@
 #'
 
 
- NullMaker = function (comm, sims = 1000, method = "r1", ordinate = TRUE, 
-    scores = 1, allowEmpty = FALSE, verbose = FALSE, seed=1){
+NullMaker = function (comm, sims = 1000, method = "r1", 
+  ordinate = TRUE, scores = 1, allowEmpty = FALSE, 
+  verbose = FALSE, seed=1){
     if (verbose == TRUE) 
         pb = txtProgressBar(min = 0, max = sims, style = 3)
     nm <- nullmodel(comm, method = method)

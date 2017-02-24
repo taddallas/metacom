@@ -58,16 +58,11 @@ user to order the matrix based on site characteristics or other biologically
 relevant characteristics.
 }
 \examples{
-## define an interaction matrix
+
 data(TestMatrices)
-intmat=TestMatrices[[1]]
-
-## analysis of boundary clumping
+intmat <- TestMatrices[[1]]
 bound.test <- BoundaryClump(intmat, order=TRUE, scores=1, binary=TRUE)
-
-## prints a single row data.frame containing the Morisita's index, p-value, and degrees of freedom
 bound.test
-
 }
 \author{
 Tad Dallas

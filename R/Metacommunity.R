@@ -80,8 +80,9 @@
 #' ems.test <- Metacommunity(intmat, method='r1', sims=100, scores=1)
 #'
 
-Metacommunity = function (comm, scores = 1, method = "r1", sims = 1000, order = TRUE, 
-    allowEmpty = FALSE, binary = TRUE, verbose = FALSE, seed=1){
+Metacommunity = function (comm, scores = 1, method = "r1", 
+  sims = 1000, order = TRUE, allowEmpty = FALSE, 
+  binary = TRUE, verbose = FALSE, seed=1){
     if (order == TRUE) {
       mat = OrderMatrix(comm, scores = scores, binary = binary)
     }else{

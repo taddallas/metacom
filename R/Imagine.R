@@ -37,7 +37,11 @@
 #' Imagine(pres3c, col=c('white','blue'), order=TRUE, fill=FALSE)
 #'
 
-Imagine <- function(comm, col=c(0,1), order=TRUE, scores=1, fill=TRUE,  xlab='Species', ylab='Site', yline=2, xline=2, sitenames=rownames(comm), speciesnames=colnames(comm), binary=TRUE){
+Imagine <- function(comm, col=c(0,1), order=TRUE, 
+  scores=1, fill=TRUE,  xlab='Species', 
+  ylab='Site', yline=2, xline=2, 
+  sitenames=rownames(comm), speciesnames=colnames(comm), 
+  binary=TRUE){
 
 	require(metacom)
 	if(order == TRUE){

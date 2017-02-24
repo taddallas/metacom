@@ -42,25 +42,24 @@
 #'
 #' If the Morisita's index is greater than 1, a right-tailed test is performed
 #' (more clumping han expected by chance)
+#'
 #' @author Tad Dallas
 #' @export
 #' @references Morisita, M. 1962. Id-index, a measure of dispersion of
 #' individuals. Res. Popul. Ecol. 4, 1-7.
+#'
 #' @examples
-#' ## define an interaction matrix
+#'
 #' data(TestMatrices)
-#' intmat=TestMatrices[[1]]
-#'
-#' ## analysis of boundary clumping
+#' intmat <- TestMatrices[[1]]
 #' bound.test <- BoundaryClump(intmat, order=TRUE, scores=1, binary=TRUE)
-#'
-#' ## prints a single row data.frame containing the Morisita's index, p-value, and degrees of freedom
 #' bound.test
-#'
+
 
 BoundaryClump <-function(comm, order=TRUE, scores=1, binary=TRUE){
+
 	if(order){comm <- OrderMatrix(comm, scores=scores, binary=binary)}
-	#fill in zeros in columns (species in a site-x-species matrix
+
 	for(i in 1:ncol(comm)) {
 		comm[min(which(comm[,i] == 1)):max(which(comm[,i] == 1)), i] <- 1
 	}

@@ -70,8 +70,9 @@
 #' #return results
 #' mod.intmat
 #'
-Modularity <- function(comm, method='tswap', sims=1000, scores=1,  order=TRUE, c = length(comm),
-    nstarts=100, returnModules=FALSE){
+Modularity <- function(comm, method='tswap', sims=1000, 
+  scores=1,  order=TRUE, c = length(comm),
+  nstarts=100, returnModules=FALSE){
 
  #suport functions
  reduce <- function(v){

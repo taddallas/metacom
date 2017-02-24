@@ -76,7 +76,7 @@ vegan: Community Ecology Package. R package version 2.0-4.
 http://CRAN.R-project.org/package=vegan
 }
 \seealso{
-commsimulator(), nullmodel(), permatfull(), commsim()
+nullmodel(), permatfull(), commsim()
 }
 \keyword{ordination}
 

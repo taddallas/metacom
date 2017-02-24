@@ -45,7 +45,11 @@
 #' @param verbose Logical. Prints a graphical progress bar that tracks the
 #' creation of null matrices. Useful for conservative null models on large
 #' and/or sparse data.
-#' @return A vector containing the number of embedded absences (embAbs), z-score (z), p-value (pval), mean (simulatedMean) and variance (simulatedVariance) of simulations, and null model randomization method (method).
+#' @param seed seed for simulating the null model. Null matrices should be repeatable.
+#'
+#' @return A vector containing the number of embedded absences (embAbs), 
+#' z-score (z), p-value (pval), mean (simulatedMean) and variance (simulatedVariance) 
+#' of simulations, and null model randomization method (method).
 #'
 #' @author Tad Dallas
 #' @export
@@ -63,12 +67,15 @@
 #' intmat=TestMatrices[[7]]
 #'
 #' #determine coherence of interaction matrix
-#' coh.intmat <- Coherence(intmat, method='r1', sims=100, scores=1, order=TRUE, binary=TRUE)
+#' coh.intmat <- Coherence(intmat, method='r1', sims=100, 
+#'   scores=1, order=TRUE, binary=TRUE)
 #'
 #' #return results
 #' coh.intmat
 #'
-Coherence <-function(comm, method='r1', sims=1000, scores=1, order=TRUE, allowEmpty=FALSE, binary=TRUE, verbose=FALSE){
+Coherence <-function(comm, method='r1', sims=1000, 
+  scores=1, order=TRUE, allowEmpty=FALSE, 
+  binary=TRUE, verbose=FALSE, seed=1){
 
 coherence <- function(web){
 	zeros <- which(web==0, arr.ind=TRUE)
