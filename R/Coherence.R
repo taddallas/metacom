@@ -107,7 +107,7 @@ nrow(ret)
   if(order==TRUE){comm <- OrderMatrix(comm, scores=scores, binary=binary)
     }else{comm <- comm}
 	statistic <- coherence(comm)
-	nulls <- NullMaker(comm=comm, sims=sims, method=method, ordinate=order, allowEmpty=allowEmpty, verbose=verbose)
+	nulls <- NullMaker(comm=comm, sims=sims, method=method, ordinate=TRUE, allowEmpty=allowEmpty, verbose=verbose)
 
 	simstat <- as.numeric(lapply(nulls,coherence))
 	varstat <- sd(simstat)
