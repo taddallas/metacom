@@ -6,7 +6,7 @@
 
 
 ### Install
-Either install from [CRAN]( http://cran.r-project.org/package=metacom), or directly from GitHub using the code below. Note that GitHub is the development version of the package, which may or may not differ from what's on CRAN.
+Either install from [CRAN]( https://cran.r-project.org/package=metacom), or directly from GitHub using the code below. Note that GitHub is the development version of the package, which may or may not differ from what's on CRAN.
 
 
 ```r

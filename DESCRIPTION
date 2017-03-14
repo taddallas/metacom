@@ -16,5 +16,5 @@ LazyLoad: yes
 LazyData: yes
 License: GPL-2
 BugReports: https://github.com/taddallas/metacom/issues
-URL: https://github.com/taddallas/metacom
+URL: https://cran.r-project.org/package=metacom
 RoxygenNote: 5.0.1

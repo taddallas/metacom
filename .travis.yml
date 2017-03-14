@@ -1,23 +1,11 @@
 language: r
-
-sudo: required
-
-before_install:
-  - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
-  - chmod 755 ./travis-tool.sh
-  - ./travis-tool.sh bootstrap
-
-install:
-  - ./travis-tool.sh install_deps
-
-r_github_packages:
-  - jimhester/covr
-
-script:
-  - ./travis-tool.sh run_tests
+sudo: false
+cache: packages
 
 after_success:
   - Rscript -e 'library(covr); codecov(token = "05a70b7e-5496-4099-bab8-8b89008cab63" )'
 
-on_failure:
-  - ./travis-tool.sh dump_logs
+notifications:
+  email:
+    on_success: change
+    on_failure: change
