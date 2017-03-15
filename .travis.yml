@@ -6,7 +6,7 @@ r-packages:
   - covr
 
 after_success:
-  - Rscript -e 'library(covr); codecov(token = "05a70b7e-5496-4099-bab8-8b89008cab63" )'
+  - Rscript -e 'install.packages('covr',  repos='http://cran.us.r-project.org'); library(covr); codecov(token = "05a70b7e-5496-4099-bab8-8b89008cab63" )'
 
 notifications:
   email:
