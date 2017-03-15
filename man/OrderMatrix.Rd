@@ -49,9 +49,6 @@ OrderMatrix(pres3c, scores = 1, outputScores = TRUE)
 
 
 }
-\author{
-Tad Dallas
-}
 \references{
 Gauch, H.G., R.H. Whittaker, and T.R. Wentworth. 1977. A
 comparative study of reciprocal averaging and other ordination techniques.
@@ -66,5 +63,7 @@ G.L. Simpson, P. Solymos, M.H.H. Stevens and H. Wagner (2012). vegan:
 Community Ecology Package. R package version 2.0-4.
 http://CRAN.R-project.org/package=vegan
 }
+\author{
+Tad Dallas
+}
 \keyword{ordination}
-

@@ -66,9 +66,6 @@ intmat <- TestMatrices[[7]]
 nulls <- NullMaker(intmat, sims=100, method='r1')
 
 }
-\author{
-Tad Dallas and John Lefcheck
-}
 \references{
 J. Oksanen, F.G. Blanchet, R. Kindt, P. Legendre, P.R. Minchin,
 R.B. O'Hara, G.L. Simpson, P. Solymos, M.H.H. Stevens and H. Wagner (2012).
@@ -78,5 +75,7 @@ http://CRAN.R-project.org/package=vegan
 \seealso{
 nullmodel(), permatfull(), commsim()
 }
+\author{
+Tad Dallas and John Lefcheck
+}
 \keyword{ordination}
-

@@ -84,9 +84,6 @@ coh.intmat <- Coherence(intmat, method='r1', sims=100,
 coh.intmat
 
 }
-\author{
-Tad Dallas
-}
 \references{
 Leibold, M.A. and G.M. Mikkelson. 2002. Coherence, species
 turnover, and boundary clumping: elements of meta-community structure. Oikos
@@ -96,4 +93,6 @@ Wright, D.H., Patterson, B.D., Mikkelson, G.M., Cutler, A. & Atmar, W.
 (1998). A comparative analysis of nested subset patterns of species
 composition. Oecologia 113, 1-20.
 }
-
+\author{
+Tad Dallas
+}

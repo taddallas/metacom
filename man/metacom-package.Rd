@@ -2,8 +2,8 @@
 % Please edit documentation in R/metacom-package.R
 \docType{package}
 \name{metacom-package}
-\alias{metacom}
 \alias{metacom-package}
+\alias{metacom}
 \title{Pattern-based analysis of metacommunity structure}
 \description{
 'metacom' provides functions for the analysis of the elements of
@@ -55,9 +55,6 @@ by Christopher Higgins (available at
 http://www.tarleton.edu/Faculty/higgins/EMS.htm) and relies on many
 functions in the 'vegan' package (Oksanen et al. 2012)
 }
-\author{
-Tad Dallas
-}
 \references{
 Dallas,T. 2014. metacom: an R package for the analysis of metacommunity
 structure. Ecography. DOI:10.1111/j.1600-0587.2013.00695.x
@@ -86,4 +83,6 @@ Higgins, C. & Klingbeil, B. (2011) Tropical metacommunities along
 elevational gradients: effects of forest type and other environmental
 factors. Oikos, 120, 1497-1508.
 }
-
+\author{
+Tad Dallas
+}

@@ -88,9 +88,6 @@ intmat <- TestMatrices[[7]]
 ems.test <- Metacommunity(intmat, method='r1', sims=100, scores=1)
 
 }
-\author{
-Tad Dallas
-}
 \references{
 Dallas,T. 2014. metacom: an R package for the analysis of
 metacommunity structure. Ecography. DOI:10.1111/j.1600-0587.2013.00695.x
@@ -106,4 +103,6 @@ Wright, D.H., Patterson, B.D., Mikkelson, G.M., Cutler, A. & Atmar, W.
 (1998). A comparative analysis of nested subset patterns of species
 composition. Oecologia 113, 1-20.
 }
-
+\author{
+Tad Dallas
+}

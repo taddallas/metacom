@@ -75,9 +75,6 @@ mod.intmat <- Modularity(intmat, method="r1", sims=5,
 mod.intmat
 
 }
-\author{
-Tomlin Pulliam and Tad Dallas
-}
 \references{
 Barber, M. J. 2007. Modularity and community detection in bipartite
 networks. Physical Review E, 76(6), 066102.
@@ -90,4 +87,6 @@ Wright, D.H., Patterson, B.D., Mikkelson, G.M., Cutler, A. & Atmar, W.
 (1998). A comparative analysis of nested subset patterns of species
 composition. Oecologia 113, 1-20.
 }
-
+\author{
+Tomlin Pulliam and Tad Dallas
+}

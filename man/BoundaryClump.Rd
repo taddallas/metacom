@@ -64,11 +64,10 @@ intmat <- TestMatrices[[1]]
 bound.test <- BoundaryClump(intmat, order=TRUE, scores=1, binary=TRUE)
 bound.test
 }
-\author{
-Tad Dallas
-}
 \references{
 Morisita, M. 1962. Id-index, a measure of dispersion of
 individuals. Res. Popul. Ecol. 4, 1-7.
 }
-
+\author{
+Tad Dallas
+}

@@ -138,13 +138,14 @@ Metacommunity = function (comm, scores = 1, method = "r1",
     coh.out <- c(embAbs = embabs, z = z, pval = pval, simulatedMean = mean(simstat), 
         simulatedVariance = varstat, method = method)
 
+    for (i in 1:ncol(mat)) {
+      mat[min(which(mat[, i] == 1)):max(which(mat[, i] == 1)), i] <- 1
+    } 
+
     boundmat <- BoundaryClump(mat, scores = scores, order = order, 
         binary = binary)
 
     turnover = function(web){
-      for (i in 1:ncol(web)) {
-        web[min(which(web[, i] == 1)):max(which(web[, i] == 1)), i] <- 1
-      } 
       D <- designdist(web, method = "(A-J)*(B-J)", terms = "minimum")
       return(sum(D))
     }

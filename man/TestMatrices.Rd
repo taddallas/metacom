@@ -48,4 +48,3 @@ Imagine(test, fill=FALSE, order=TRUE)
 
 }
 \keyword{datasets}
-
