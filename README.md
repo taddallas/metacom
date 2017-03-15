@@ -5,6 +5,9 @@
 [![Downloads](http://cranlogs.r-pkg.org/badges/metacom)](http://cranlogs.r-pkg.org/badges/metacom)
 
 
+[![codecov](https://codecov.io/gh/taddallas/metacom/branch/master/graph/badge.svg)](https://codecov.io/gh/taddallas/metacom)
+
+
 ### Install
 Either install from [CRAN]( https://cran.r-project.org/package=metacom), or directly from GitHub using the code below. Note that GitHub is the development version of the package, which may or may not differ from what's on CRAN.
 
