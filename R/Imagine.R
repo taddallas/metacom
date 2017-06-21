@@ -74,7 +74,7 @@ axis(2, at=1:dim(comm)[1], labels=sitenames, las= 1, cex.axis=1,lwd.ticks=0)
 }
 
 if(length(speciesnames)>1){
-axis(3, at=1:dim(comm)[2], labels=speciesnames, cex.axis=1, lwd.ticks=0)
+axis(3, at=1:dim(comm)[2], labels=speciesnames, las=2, cex.axis=1, lwd.ticks=0)
 }
 
 mtext(xlab, 3, cex=1.5, line=xline)
