@@ -44,6 +44,9 @@
 #' creation of null matrices. Useful for conservative null models on large
 #' and/or sparse data.
 #' @param seed seed for simulating the null model. Null matrices should be repeatable.
+#' @param fill should embedded absences be filled before the statistic 
+#'	is calculated? (default is TRUE)
+#'
 #' @return A data.frame containing the test statistic (turnover), z-value (z), p-value (pval), 
 #' mean (simulatedMean) and variance (simulatedVariance) of simulations, and randomization method (method)
 #'
@@ -68,27 +71,27 @@
 
 Turnover = function (comm, method = "r1", sims = 1000, 
   scores = 1, order = TRUE, allowEmpty = FALSE, 
-  binary = TRUE, verbose = FALSE, seed=1){
+  binary = TRUE, verbose = FALSE, seed=1, fill=TRUE){
     if (order) {
         comm = OrderMatrix(comm, scores = scores, binary = binary)
     }
-    for (i in 1:ncol(comm)) {
-        comm[min(which(comm[, i] == 1)):max(which(comm[, i] == 
-            1)), i] <- 1
-    }
-    turnover <- function(web) {
-        D <- designdist(web, method = "(A-J)*(B-J)", terms = "minimum")
-        return(sum(D))
-    }
-    statistic <- turnover(comm)
-    nulls <- NullMaker(comm = comm, sims = sims, method = method, 
-        allowEmpty = allowEmpty, verbose = verbose, ordinate = order)
-    simstat <- as.numeric(lapply(nulls, turnover))
-    varstat <- sd(simstat)
-    z <- (mean(simstat) - statistic)/(varstat)
-    pval <- 2 * pnorm(-abs(z))
-    return(data.frame(turnover = statistic, z = z, pval = pval, 
-        simulatedMean = mean(simstat), simulatedVariance = varstat, 
-        method = method))
+	if(fill){
+		for (i in 1:ncol(comm)) {
+			comm[min(which(comm[, i] == 1)):max(which(comm[, i] == 1)), i] <- 1
+		}
+	}
+  turnover <- function(web) {
+      D <- designdist(web, method = "(A-J)*(B-J)", terms = "minimum")
+      return(sum(D))
+  }
+  statistic <- turnover(comm)
+  nulls <- NullMaker(comm = comm, sims = sims, method = method, 
+      allowEmpty = allowEmpty, verbose = verbose, ordinate = order)
+  simstat <- as.numeric(lapply(nulls, turnover))
+  varstat <- sd(simstat)
+  z <- (mean(simstat) - statistic)/(varstat)
+  pval <- 2 * pnorm(-abs(z))
+  return(data.frame(turnover = statistic, z = z, pval = pval, 
+      simulatedMean = mean(simstat), simulatedVariance = varstat, 
+      method = method))
 }
-

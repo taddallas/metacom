@@ -4,7 +4,8 @@
 \alias{BoundaryClump}
 \title{Determines boundary clumping}
 \usage{
-BoundaryClump(comm, order = TRUE, scores = 1, binary = TRUE)
+BoundaryClump(comm, order = TRUE, scores = 1, binary = TRUE,
+  fill = TRUE)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}
@@ -17,6 +18,9 @@ matrix or not. See details.}
 
 \item{binary}{logical argument indicating whether to ordinate the community
 matrix based on abundance or binary (default) data.}
+
+\item{fill}{should embedded absences be filled before the statistic 
+is calculated? (default is TRUE)}
 }
 \value{
 'BoundaryClump' returns a data frame containing the calculated

@@ -142,8 +142,8 @@ Metacommunity = function (comm, scores = 1, method = "r1",
       mat[min(which(mat[, i] == 1)):max(which(mat[, i] == 1)), i] <- 1
     } 
 
-    boundmat <- BoundaryClump(mat, scores = scores, order = order, 
-        binary = binary)
+    boundmat <- BoundaryClump(mat, scores = scores, order = FALSE, 
+        binary = binary, fill=FALSE)
 
     turnover = function(web){
       D <- designdist(web, method = "(A-J)*(B-J)", terms = "minimum")

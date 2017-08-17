@@ -5,7 +5,8 @@
 \title{Determines species turnover}
 \usage{
 Turnover(comm, method = "r1", sims = 1000, scores = 1, order = TRUE,
-  allowEmpty = FALSE, binary = TRUE, verbose = FALSE, seed = 1)
+  allowEmpty = FALSE, binary = TRUE, verbose = FALSE, seed = 1,
+  fill = TRUE)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}
@@ -32,6 +33,9 @@ creation of null matrices. Useful for conservative null models on large
 and/or sparse data.}
 
 \item{seed}{seed for simulating the null model. Null matrices should be repeatable.}
+
+\item{fill}{should embedded absences be filled before the statistic 
+is calculated? (default is TRUE)}
 }
 \value{
 A data.frame containing the test statistic (turnover), z-value (z), p-value (pval), 
