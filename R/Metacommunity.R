@@ -83,68 +83,70 @@
 Metacommunity = function (comm, scores = 1, method = "r1", 
   sims = 1000, order = TRUE, allowEmpty = FALSE, 
   binary = TRUE, verbose = FALSE, seed=1){
-    if (order == TRUE) {
-      mat = OrderMatrix(comm, scores = scores, binary = binary)
+    if(order){
+      mat <- OrderMatrix(comm, scores = scores, binary = binary)
     }else{
-      mat = comm
+      mat <- comm
     }
-    nulls = NullMaker(mat, sims = sims, method = method, allowEmpty = allowEmpty, 
+
+    nulls <- NullMaker(mat, sims = sims, method = method, allowEmpty = allowEmpty, 
         verbose = verbose, ordinate=order)
 
     coherence <- function(web) {
-        zeros = which(web == 0, arr.ind = TRUE)
-        ret = matrix(0, ncol = 2)
-        uncols = which(colSums(web) > 1)
-        for (i in 1:length(uncols)) {
-            temp = zeros[which(zeros[, 2] == uncols[i]), ]
-            tempmin = min(which(web[, uncols[i]] == 1))
-            tempmax = max(which(web[, uncols[i]] == 1))
+        zeros <- which(web == 0, arr.ind = TRUE)
+        ret <- matrix(0, ncol = 2)
+        uncols <- which(colSums(web) > 1)
+        for (i in seq_len(length(uncols))){
+            temp <- zeros[which(zeros[, 2] == uncols[i]), ]
+            tempmin <- min(which(web[, uncols[i]] == 1))
+            tempmax <- max(which(web[, uncols[i]] == 1))
             if (length(temp) < 3) {
                 if (temp[1] %in% tempmin:tempmax) {
-                  ret = rbind(ret, as.vector(temp))
+                  ret <- rbind(ret, as.vector(temp))
                 }
-            }
-            else {
-                temp = temp[which(temp[, 1] %in% tempmin:tempmax), 
-                  ]
-                ret = rbind(ret, temp)
+            }else{
+            	temp <- temp[which(temp[, 1] %in% tempmin:tempmax), ]
+              ret <- rbind(ret, temp)
             }
         }
-        unrows = which(rowSums(web) > 1)
-        for (j in 1:length(unrows)) {
-            temp = zeros[which(zeros[, 1] == unrows[j]), ]
-            tempmin = min(which(web[unrows[j], ] == 1))
-            tempmax = max(which(web[unrows[j], ] == 1))
-            if (length(temp) < 3) {
-                if (temp[1] %in% tempmin:tempmax) {
-                  ret = rbind(ret, as.vector(temp))
-                }
+        unrows <- which(rowSums(web) > 1)
+        for (j in seq_len(length(unrows))){
+        	temp <- zeros[which(zeros[, 1] == unrows[j]), ]
+          tempmin <- min(which(web[unrows[j], ] == 1))
+          tempmax <- max(which(web[unrows[j], ] == 1))
+          if (length(temp) < 3) {
+        	  if (temp[1] %in% tempmin:tempmax) {
+        	    ret <- rbind(ret, as.vector(temp))
             }
-            else {
-                temp = temp[which(temp[, 2] %in% tempmin:tempmax), 
-                  ]
-                ret = rbind(ret, temp)
-            }
+          }else{
+	          temp <- temp[which(temp[, 2] %in% tempmin:tempmax), ]
+            ret <- rbind(ret, temp)
+          }
         }
-        ret = ret[-1, ]
-        ret = unique(ret)
+        ret <- ret[-1, ]
+        ret <- unique(ret)
         return(dim(ret)[1])
     }
+
+		#coherence
     embabs <- coherence(mat)
-    simstat <- as.numeric(lapply(nulls, coherence))
+    simstat <- vapply(nulls, coherence, FUN.VALUE=numeric(1))
     varstat <- sd(simstat)
     z <- (mean(simstat) - embabs)/(varstat)
     pval <- 2 * pnorm(-abs(z))
     coh.out <- c(embAbs = embabs, z = z, pval = pval, simulatedMean = mean(simstat), 
         simulatedVariance = varstat, method = method)
 
-    for (i in 1:ncol(mat)) {
+		#fill the embedded absences
+    for (i in seq_len(ncol(mat))){
       mat[min(which(mat[, i] == 1)):max(which(mat[, i] == 1)), i] <- 1
     } 
 
+		#boundary clumping
     boundmat <- BoundaryClump(mat, scores = scores, order = FALSE, 
         binary = binary, fill=FALSE)
 
+		#turnover
     turnover = function(web){
       D <- designdist(web, method = "(A-J)*(B-J)", terms = "minimum")
       return(sum(D))
@@ -156,7 +158,8 @@ Metacommunity = function (comm, scores = 1, method = "r1",
     pval.t <- 2 * pnorm(-abs(z.t))
     tur <- c(turnover = turn, z = z.t, pval = pval.t, simulatedMean = mean(simstat.t), 
         simulatedVariance = varstat.t, method = method)
-    ret = list(Comm = mat, Coherence = coh.out, Turnover = tur, 
+		#return
+    ret <- list(Comm = mat, Coherence = coh.out, Turnover = tur, 
         Boundary = boundmat)
     return(ret)
 }
