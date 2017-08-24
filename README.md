@@ -1,11 +1,9 @@
 ### *metacom*: an R package for the analysis of metacommunity structure
 
 [![Build Status](https://travis-ci.org/taddallas/metacom.png?branch=master)](https://travis-ci.org/taddallas/metacom)
-
 [![Downloads](http://cranlogs.r-pkg.org/badges/metacom)](http://cranlogs.r-pkg.org/badges/metacom)
-
-
 [![codecov](https://codecov.io/gh/taddallas/metacom/branch/master/graph/badge.svg)](https://codecov.io/gh/taddallas/metacom)
+[![Build status](https://ci.appveyor.com/api/projects/status/rmq9euldm5gy9qup?svg=true)](https://ci.appveyor.com/project/taddallas/metacom)
 
 
 ### Install

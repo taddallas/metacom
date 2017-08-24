@@ -1,0 +1,35 @@
+environment:
+  R_CHECK_ARGS: --no-build-vignettes --no-manual
+  USE_RTOOLS: true
+  global:
+    WARNINGS_ARE_ERRORS: 1
+  matrix:
+  - R_VERSION: devel
+    GCC_PATH: mingw_32
+
+  - R_VERSION: release
+    R_ARCH: x64
+
+  - R_VERSION: stable
+
+  - R_VERSION: oldrel
+    RTOOLS_VERSION: 33
+    CRAN: http://cran.rstudio.com
+
+init:
+  ps: |
+        $ErrorActionPreference = "Stop"
+        Invoke-WebRequest http://raw.github.com/krlmlr/r-appveyor/master/scripts/appveyor-tool.ps1 -OutFile "..\appveyor-tool.ps1"
+        Import-Module '..\appveyor-tool.ps1'
+install:
+  ps: Bootstrap
+
+build_script:
+  - travis-tool.sh install_github hadley/devtools
+  - travis-tool.sh install_deps
+
+test_script:
+  - travis-tool.sh run_tests
+
+on_failure:
+  - travis-tool.sh dump_logs

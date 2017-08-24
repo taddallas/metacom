@@ -65,7 +65,8 @@ relevant characteristics.
 
 data(TestMatrices)
 intmat <- TestMatrices[[1]]
-bound.test <- BoundaryClump(intmat, order=TRUE, scores=1, binary=TRUE)
+bound.test <- BoundaryClump(intmat, order=TRUE, scores=1, 
+binary=TRUE, fill=TRUE)
 bound.test
 }
 \references{
