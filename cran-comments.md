@@ -16,8 +16,10 @@ No changes affect reverse dependencies
 
 ---
 
+Sorry for the short gap between updates. Needed minor bug fix. 
+
 I have read and agree to the the CRAN policies at 
 https://cran.r-project.org/web/packages/policies.html
 
 Thanks!
-Tad Dallas
+

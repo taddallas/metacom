@@ -28,6 +28,10 @@
 #' (default) 2: secondary axis scores. See Details.
 #' @param method null model randomization method used by 'nullmaker'. See
 #' details.
+#' @param	turnoverMethod (default='EMS') 'EMS' option generates null matrices 
+#'  as in Leibold and Mikkelson's original framework. However, null models
+#'  that randomize occurrences -- introducing embedded absences (bad), but in a
+#'  far less constrained null space (good) -- can also be used
 #' @param sims number of simulated null matrices to use in analysis
 #' @param order logical argument indicating whether to ordinate the interaction
 #' matrix or not. See details.
@@ -80,18 +84,17 @@
 #' ems.test <- Metacommunity(intmat, method='r1', sims=100, scores=1)
 #'
 
-Metacommunity = function (comm, scores = 1, method = "r1", 
-  sims = 1000, order = TRUE, allowEmpty = FALSE, 
-  binary = TRUE, verbose = FALSE, seed=1){
+Metacommunity = function (comm, scores = 1, method = "r1",
+	turnoverMethod='EMS', sims = 1000, order = TRUE, 
+	allowEmpty = FALSE, binary = TRUE, verbose = FALSE, seed=1){
+
     if(order){
       mat <- OrderMatrix(comm, scores = scores, binary = binary)
     }else{
       mat <- comm
     }
-
     nulls <- NullMaker(mat, sims = sims, method = method, allowEmpty = allowEmpty, 
         verbose = verbose, ordinate=order)
-
     coherence <- function(web) {
         zeros <- which(web == 0, arr.ind = TRUE)
         ret <- matrix(0, ncol = 2)
@@ -134,31 +137,21 @@ Metacommunity = function (comm, scores = 1, method = "r1",
     varstat <- sd(simstat)
     z <- (mean(simstat) - embabs)/(varstat)
     pval <- 2 * pnorm(-abs(z))
-    coh.out <- c(embAbs = embabs, z = z, pval = pval, simulatedMean = mean(simstat), 
-        simulatedVariance = varstat, method = method)
 
-		#fill the embedded absences
-    for (i in seq_len(ncol(mat))){
-      mat[min(which(mat[, i] == 1)):max(which(mat[, i] == 1)), i] <- 1
-    } 
+		meth <- paste('method =', method)
+    coh.out <- data.frame(name=c('embAbs', 'z', 'p', 
+			'simMean', 'simVariance', meth), 
+		stat=c(embabs, z, pval, mean(simstat), varstat, NA))
 
 		#boundary clumping
     boundmat <- BoundaryClump(mat, scores = scores, order = FALSE, 
-        binary = binary, fill=FALSE)
+        binary = binary, fill=TRUE)
 
 		#turnover
-    turnover = function(web){
-      D <- designdist(web, method = "(A-J)*(B-J)", terms = "minimum")
-      return(sum(D))
-    }
-    turn <- turnover(mat)
-    simstat.t <- as.numeric(lapply(nulls, turnover))
-    varstat.t <- sd(simstat.t)
-    z.t <- (mean(simstat.t) - turn)/(varstat.t)
-    pval.t <- 2 * pnorm(-abs(z.t))
-    tur <- c(turnover = turn, z = z.t, pval = pval.t, simulatedMean = mean(simstat.t), 
-        simulatedVariance = varstat.t, method = method)
-		#return
+		tur <- Turnover(comm, method=turnoverMethod, scores=scores, 
+			sims=sims, order=order, fill=TRUE, allowEmpty=allowEmpty, 
+			binary=binary, seed=seed)
+
     ret <- list(Comm = mat, Coherence = coh.out, Turnover = tur, 
         Boundary = boundmat)
     return(ret)

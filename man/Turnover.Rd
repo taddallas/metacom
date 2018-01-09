@@ -4,15 +4,15 @@
 \alias{Turnover}
 \title{Determines species turnover}
 \usage{
-Turnover(comm, method = "r1", sims = 1000, scores = 1, order = TRUE,
+Turnover(comm, method = "EMS", sims = 1000, scores = 1, order = TRUE,
   allowEmpty = FALSE, binary = TRUE, verbose = FALSE, seed = 1,
   fill = TRUE)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}
 
-\item{method}{null model randomization method used by 'nullmaker'. See
-details.}
+\item{method}{null model randomization method used by 'nullmaker' or 'EMS'
+to use the approach outlined in Leibold and Mikkelson 2002. See details.}
 
 \item{sims}{number of simulated null matrices to use in analysis}
 
@@ -38,8 +38,9 @@ and/or sparse data.}
 is calculated? (default is TRUE)}
 }
 \value{
-A data.frame containing the test statistic (turnover), z-value (z), p-value (pval), 
-mean (simulatedMean) and variance (simulatedVariance) of simulations, and randomization method (method)
+A data.frame containing the test statistic (turnover), z-value (z), 
+ p-value (pval), mean (simulatedMean) and variance (simulatedVariance) of 
+ simulations, and randomization method (method)
 }
 \description{
 'Turnover' is a function that assesses species turnover from the range
@@ -78,7 +79,8 @@ data(TestMatrices)
 intmat <- TestMatrices[[3]]
 
 #determine species turnover
-turnover.intmat <- Turnover(intmat, method='r1', sims=100, scores=1, binary=TRUE)
+turnover.intmat <- Turnover(intmat, method='r1', 
+   sims=100, scores=1, binary=TRUE)
 
 }
 \references{

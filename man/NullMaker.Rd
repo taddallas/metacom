@@ -4,8 +4,8 @@
 \alias{NullMaker}
 \title{Null matrix creator}
 \usage{
-NullMaker(comm, sims = 1000, method = "r1", ordinate = TRUE, scores = 1,
-  allowEmpty = FALSE, verbose = FALSE, seed = 1)
+NullMaker(comm, sims = 1000, method = "r1", ordinate = FALSE,
+  scores = 1, allowEmpty = FALSE, verbose = FALSE, seed = 1)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}
@@ -15,7 +15,7 @@ NullMaker(comm, sims = 1000, method = "r1", ordinate = TRUE, scores = 1,
 \item{method}{null model randomization method. See details below.}
 
 \item{ordinate}{logical. Would you like to ordinate the null matrices?
-Default is TRUE.}
+Default is FALSE.}
 
 \item{scores}{Axis scores to ordinate matrix. 1: primary axis scores
 (default) 2: secondary axis scores. See Details.}

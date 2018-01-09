@@ -26,7 +26,7 @@
 #' @param sims number of simulated null matrices to use in analysis
 #' @param method null model randomization method. See details below.
 #' @param ordinate logical. Would you like to ordinate the null matrices?
-#' Default is TRUE.
+#' Default is FALSE.
 #' @param scores Axis scores to ordinate matrix. 1: primary axis scores
 #' (default) 2: secondary axis scores. See Details.
 #' @param allowEmpty logical argument indicating whether to allow null
@@ -56,52 +56,67 @@
 
 
 NullMaker = function (comm, sims = 1000, method = "r1", 
-  ordinate = TRUE, scores = 1, allowEmpty = FALSE, 
+  ordinate = FALSE, scores = 1, allowEmpty = FALSE, 
   verbose = FALSE, seed=1){
-    if (verbose == TRUE) 
+
+    if(verbose == TRUE){ 
         pb = txtProgressBar(min = 0, max = sims, style = 3)
+		}
+
     nm <- nullmodel(comm, method = method)
-    sm <- simulate(nm, nsim = sims, seed=seed)
-    sm.list <- lapply(seq(dim(sm)[3]), function(i) sm[, , i])
-    if (verbose == TRUE & allowEmpty == TRUE) 
+ 		sm <- simulate(nm, nsim = sims, seed=seed)
+ 		sm.list <- lapply(seq(dim(sm)[3]), function(i) sm[, , i])
+
+    if(verbose == TRUE & allowEmpty == TRUE){
         setTxtProgressBar(pb, length(sm.list))
-    if (allowEmpty == FALSE) {
-        flag = FALSE
-        sm.list <- if (allowEmpty == FALSE) 
-            lapply(sm.list, function(i) if (any(colSums(i) == 
-                0) | any(rowSums(i) == 0)) 
-                NULL
-            else i)
+		}
+
+    if(allowEmpty == FALSE){
+        sm.list <- lapply(sm.list, function(i){
+						if (any(colSums(i) == 0) | any(rowSums(i) == 0)){
+							NULL
+						}else{
+							i
+						}
+					})
         sm.list[sapply(sm.list, is.null)] = NULL
-        if (verbose == TRUE) 
-            setTxtProgressBar(pb, length(sm.list))
-        while (flag == FALSE) {
-            if (length(sm.list) == sims) 
-                flag = TRUE
-            else {
-                spares <- simulate(nm, nsim = sims/10)
-                spares.list <- lapply(seq(dim(spares)[3]), function(i) spares[, 
-                  , i])
-                spares.list <- lapply(spares.list, function(i) if (any(colSums(i) == 
-                  0) | any(rowSums(i) == 0)) 
-                  NULL
-                else i)
-                spares.list[sapply(spares.list, is.null)] <- NULL
-                sm.list <- append(sm.list, spares.list)
-                if (verbose == TRUE & length(sm.list) <= sims) 
-                  setTxtProgressBar(pb, length(sm.list))
-                if (length(sm.list) >= sims) {
-                  sm.list <- sm.list[1:sims]
-                  if (verbose == TRUE) 
-                    setTxtProgressBar(pb, length(sm.list))
-                  flag = TRUE
-                }
-            }
-        }
+		}
+		if(verbose == TRUE){setTxtProgressBar(pb, length(sm.list))}
+
+		flag=FALSE
+    while(flag == FALSE){
+	    if(length(sm.list) == sims){ 
+	      flag = TRUE
+      }else{
+	     	spares <- simulate(nm, nsim = sims/10)
+        spares.list <- lapply(seq(dim(spares)[3]), 
+					function(i){spares[,, i]})
+        spares.list <- lapply(spares.list, function(i){
+					if (any(colSums(i) == 0) | any(rowSums(i) == 0)){ 
+		        NULL
+					}else{
+						i
+					}
+				})
+				spares.list[sapply(spares.list, is.null)] <- NULL
+				sm.list <- append(sm.list, spares.list)
+        if(verbose == TRUE & length(sm.list) <= sims){ 
+          setTxtProgressBar(pb, length(sm.list))
+				}
+				if(length(sm.list) >= sims){
+	        sm.list <- sm.list[1:sims]
+          flag = TRUE
+     		}
+      }
     }
-    if (ordinate == TRUE) 
-        sm.list <- lapply(sm.list, OrderMatrix, scores = scores)
-    return(sm.list)
+
+    if (ordinate == TRUE){
+	    sm.list <- lapply(sm.list, OrderMatrix, scores = scores)
+		}
+		if(verbose == TRUE){ 
+	    setTxtProgressBar(pb, length(sm.list))
+		}
+	return(sm.list)
 }
 
 

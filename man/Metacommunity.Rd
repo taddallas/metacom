@@ -4,9 +4,9 @@
 \alias{Metacommunity}
 \title{Analysis of the Elements of Metacommunity Structure}
 \usage{
-Metacommunity(comm, scores = 1, method = "r1", sims = 1000,
-  order = TRUE, allowEmpty = FALSE, binary = TRUE, verbose = FALSE,
-  seed = 1)
+Metacommunity(comm, scores = 1, method = "r1", turnoverMethod = "EMS",
+  sims = 1000, order = TRUE, allowEmpty = FALSE, binary = TRUE,
+  verbose = FALSE, seed = 1)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}
@@ -16,6 +16,11 @@ Metacommunity(comm, scores = 1, method = "r1", sims = 1000,
 
 \item{method}{null model randomization method used by 'nullmaker'. See
 details.}
+
+\item{turnoverMethod}{(default='EMS') 'EMS' option generates null matrices 
+as in Leibold and Mikkelson's original framework. However, null models
+that randomize occurrences -- introducing embedded absences (bad), but in a
+far less constrained null space (good) -- can also be used}
 
 \item{sims}{number of simulated null matrices to use in analysis}
 

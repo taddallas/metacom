@@ -29,8 +29,8 @@
 #' units community with species ranges (range perspective) filled in
 #'
 #' @param comm community data in the form of a presence absence matrix
-#' @param method null model randomization method used by 'nullmaker'. See
-#' details.
+#' @param method null model randomization method used by 'nullmaker' or 'EMS'
+#'  to use the approach outlined in Leibold and Mikkelson 2002. See details.
 #' @param sims number of simulated null matrices to use in analysis
 #' @param scores axis scores to ordinate matrix. 1: primary axis scores
 #' (default) 2: secondary axis scores
@@ -47,8 +47,9 @@
 #' @param fill should embedded absences be filled before the statistic 
 #'	is calculated? (default is TRUE)
 #'
-#' @return A data.frame containing the test statistic (turnover), z-value (z), p-value (pval), 
-#' mean (simulatedMean) and variance (simulatedVariance) of simulations, and randomization method (method)
+#' @return A data.frame containing the test statistic (turnover), z-value (z), 
+#'  p-value (pval), mean (simulatedMean) and variance (simulatedVariance) of 
+#'  simulations, and randomization method (method)
 #'
 #' @author Tad Dallas
 #' @export
@@ -66,12 +67,13 @@
 #' intmat <- TestMatrices[[3]]
 #'
 #' #determine species turnover
-#' turnover.intmat <- Turnover(intmat, method='r1', sims=100, scores=1, binary=TRUE)
+#' turnover.intmat <- Turnover(intmat, method='r1', 
+#'    sims=100, scores=1, binary=TRUE)
 #'
 
-Turnover = function (comm, method = "r1", sims = 1000, 
+Turnover = function (comm, method = "EMS", sims = 1000, 
   scores = 1, order = TRUE, allowEmpty = FALSE, 
-  binary = TRUE, verbose = FALSE, seed=1, fill=TRUE){
+  binary = TRUE, verbose = FALSE, seed=1, fill = TRUE){
     if (order) {
         comm = OrderMatrix(comm, scores = scores, binary = binary)
     }
@@ -84,14 +86,37 @@ Turnover = function (comm, method = "r1", sims = 1000,
       D <- designdist(web, method = "(A-J)*(B-J)", terms = "minimum")
       return(sum(D))
   }
+
   statistic <- turnover(comm)
-  nulls <- NullMaker(comm = comm, sims = sims, method = method, 
-      allowEmpty = allowEmpty, verbose = verbose, ordinate = order)
+
+	if(method != 'EMS'){
+		nulls <- NullMaker(comm = comm, sims = sims, 
+				method = method, allowEmpty = allowEmpty, 
+				verbose = verbose, ordinate = FALSE, seed=seed)
+	}
+
+	if(method=='EMS'){
+		if(fill==FALSE){
+			warning("When using method 'EMS', fill should be set to TRUE")
+		}
+		randomCol <- function(x){
+			startInd <- sample(1:(length(x) - sum(x) + 1), 1)
+			x2 <- vector('numeric', length=length(x))
+			x2[startInd:(startInd+sum(x)-1)] <- 1
+			return(x2)
+		}
+		nulls <- list()
+		for(i in 1:sims){
+			nulls[[i]] <- apply(comm, 2, randomCol)
+		}
+	}
+
   simstat <- as.numeric(lapply(nulls, turnover))
   varstat <- sd(simstat)
   z <- (mean(simstat) - statistic)/(varstat)
   pval <- 2 * pnorm(-abs(z))
-  return(data.frame(turnover = statistic, z = z, pval = pval, 
-      simulatedMean = mean(simstat), simulatedVariance = varstat, 
-      method = method))
+	meth <- paste('method =', method)	
+	return(data.frame(name=c('turnover', 'z', 'p', 
+		'simMean', 'simVariance', meth), 
+		stat=c(statistic, z, pval, mean(simstat), varstat, NA)))
 }

@@ -61,7 +61,9 @@
 
 BoundaryClump <-function(comm, order=TRUE, scores=1, 
 	binary=TRUE, fill=TRUE){
-	if(order==TRUE){comm <- OrderMatrix(comm, scores=scores)}
+	if(order==TRUE){
+		comm <- OrderMatrix(comm, scores=scores)
+	}
 	if(fill){
 		for (i in 1:ncol(comm)) {
 			comm[min(which(comm[, i] == 1)):max(which(comm[, i] == 1)), i] <- 1
@@ -71,7 +73,6 @@ BoundaryClump <-function(comm, order=TRUE, scores=1,
 	M <- 0
 	ComBnd <- rep(0, ncol(comm))
 	ComBndChi <- 0
-
 	for(i in 1:nrow(comm)){
 		ind1 <- which(comm[i,]==1)
 		for(j in 1:ncol(comm)){
@@ -93,6 +94,7 @@ BoundaryClump <-function(comm, order=TRUE, scores=1,
 	}else{ 
 		Mpr <- 1 - pchisq(ComBndChi,df)
 	}
-  return(data.frame(index=M,P=Mpr,df=df))
+	return(data.frame(name=c('index', 'p', 'df'),
+		stat=c(M, Mpr, df))) 
 }
 
