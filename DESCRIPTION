@@ -2,10 +2,9 @@ Package: metacom
 Type: Package
 Title: Analysis of the 'Elements of Metacommunity Structure'
 Version: 1.5.1
-Authors@R: as.person(c(
-    "Tad Dallas <tad.a.dallas@gmail.com> [aut, cre]", 
-    "Tomlin Pulliam <tomlinp@gmail.com> [ctb]"
-  ))
+Authors@R: c(
+    person("Tad", "Dallas", email = "tad.a.dallas@gmail.com", role = "cre"),
+    person("Tom", "Pulliam", email = "tomlinp@gmail.com", role = "ctb"))
 Depends:
     vegan (>= 2.2-1)
 Suggests: testthat
