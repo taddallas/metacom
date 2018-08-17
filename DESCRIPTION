@@ -1,12 +1,12 @@
 Package: metacom
 Type: Package
 Title: Analysis of the 'Elements of Metacommunity Structure'
-Version: 1.5.0
+Version: 1.5.1
 Author: Tad Dallas
 Depends:
     vegan (>= 2.2-1)
 Suggests: testthat
-Maintainer: Tad Dallas <tdallas@ucdavis.edu>
+Maintainer: Tad Dallas <tad.a.dallas@gmail.com>
 Description: Functions to analyze coherence, boundary clumping, and turnover
     following the pattern-based metacommunity analysis of Leibold and Mikkelson
     2002  <doi:10.1034/j.1600-0706.2002.970210.x>. The package also includes 

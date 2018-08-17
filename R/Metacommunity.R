@@ -94,7 +94,7 @@ Metacommunity = function (comm, scores = 1, method = "r1",
       mat <- comm
     }
     nulls <- NullMaker(mat, sims = sims, method = method, allowEmpty = allowEmpty, 
-        verbose = verbose, ordinate=order)
+        verbose = verbose, ordinate=FALSE)
     coherence <- function(web) {
         zeros <- which(web == 0, arr.ind = TRUE)
         ret <- matrix(0, ncol = 2)
