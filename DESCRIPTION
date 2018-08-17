@@ -2,7 +2,10 @@ Package: metacom
 Type: Package
 Title: Analysis of the 'Elements of Metacommunity Structure'
 Version: 1.5.1
-Author: Tad Dallas
+Authors@R: as.person(c(
+    "Tad Dallas <tad.a.dallas@gmail.com> [aut, cre]", 
+    "Tomlin Pulliam <tomlinp@gmail.com> [ctb]"
+  ))
 Depends:
     vegan (>= 2.2-1)
 Suggests: testthat
