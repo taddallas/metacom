@@ -5,7 +5,8 @@
 \title{Calculates Barber's Bipartite Modularity}
 \usage{
 Modularity(comm, method = "tswap", sims = 1000, scores = 1,
-  order = TRUE, c = length(comm), nstarts = 100, returnModules = FALSE)
+  order = TRUE, c = length(comm), nstarts = 100,
+  returnModules = FALSE)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}

@@ -4,8 +4,9 @@
 \alias{Coherence}
 \title{Determines coherence}
 \usage{
-Coherence(comm, method = "r1", sims = 1000, scores = 1, order = TRUE,
-  allowEmpty = FALSE, binary = TRUE, verbose = FALSE, seed = 1)
+Coherence(comm, method = "r1", sims = 1000, scores = 1,
+  order = TRUE, allowEmpty = FALSE, binary = TRUE, verbose = FALSE,
+  seed = 1)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}

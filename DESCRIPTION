@@ -19,4 +19,4 @@ LazyData: yes
 License: GPL-2
 BugReports: https://github.com/taddallas/metacom/issues
 URL: https://cran.r-project.org/package=metacom
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1

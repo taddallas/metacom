@@ -8,3 +8,13 @@ test_that("Metacommunity and BoundaryClump agree", {
 	expect_equal(mc.test$Boundary$stat[1], 
     bc.test$stat[1])
 })
+
+
+test_that("BoundaryClump same as Leibold and Mikkelson 2002", {
+  data(TestMatrices)
+  bc.test2 <- BoundaryClump(t(TestMatrices[[5]]))
+	expect_equal(bc.test2$stat[1], 
+    1.684210526)
+})
+
+

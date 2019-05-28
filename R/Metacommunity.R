@@ -135,7 +135,7 @@ Metacommunity = function (comm, scores = 1, method = "r1",
     embabs <- coherence(mat)
     simstat <- vapply(nulls, coherence, FUN.VALUE=numeric(1))
     varstat <- sd(simstat)
-    z <- (mean(simstat) - embabs)/(varstat)
+    z <- (embabs-mean(simstat))/(varstat)
     pval <- 2 * pnorm(-abs(z))
 
 		meth <- paste('method =', method)

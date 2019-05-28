@@ -4,9 +4,9 @@
 \alias{Turnover}
 \title{Determines species turnover}
 \usage{
-Turnover(comm, method = "EMS", sims = 1000, scores = 1, order = TRUE,
-  allowEmpty = FALSE, binary = TRUE, verbose = FALSE, seed = 1,
-  fill = TRUE)
+Turnover(comm, method = "EMS", sims = 1000, scores = 1,
+  order = TRUE, allowEmpty = FALSE, binary = TRUE, verbose = FALSE,
+  seed = 1, fill = TRUE)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}

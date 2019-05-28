@@ -113,7 +113,7 @@ Turnover = function (comm, method = "EMS", sims = 1000,
 
   simstat <- as.numeric(lapply(nulls, turnover))
   varstat <- sd(simstat)
-  z <- (mean(simstat) - statistic)/(varstat)
+  z <- (statistic-mean(simstat))/(varstat)
   pval <- 2 * pnorm(-abs(z))
 	meth <- paste('method =', method)	
 	return(data.frame(name=c('turnover', 'z', 'p', 

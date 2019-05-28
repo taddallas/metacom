@@ -8,3 +8,14 @@ test_that("Metacommunity and Coherence agree", {
 	expect_equal(mc.test$Coherence$stat[1], 
     coh.test$stat[1])
 })
+
+
+
+test_that("Coherence same as Leibold and Mikkelson 2002", {
+  data(TestMatrices)
+  coh.test2 <- Coherence(TestMatrices[[2]], sims=100, method='swap')
+	expect_equal(coh.test2$stat[1], 
+    22)
+})
+
+

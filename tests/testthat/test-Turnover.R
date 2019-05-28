@@ -8,3 +8,13 @@ test_that("Metacommunity and Turnover agree", {
 	expect_equal(mc.test$Turnover$stat[1], 
     turn.test$stat[1])
 })
+
+
+
+test_that("Turnover same as Leibold and Mikkelson 2002", {
+  data(TestMatrices)
+  trn.test2 <- Turnover(TestMatrices[[4]])
+	expect_equal(trn.test2$stat[1], 
+    191)
+})
+
