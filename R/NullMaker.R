@@ -83,31 +83,27 @@ NullMaker = function (comm, sims = 1000, method = "r1",
 		}
 		if(verbose == TRUE){setTxtProgressBar(pb, length(sm.list))}
 
-		flag=FALSE
-    while(flag == FALSE){
-	    if(length(sm.list) == sims){ 
-	      flag = TRUE
-      }else{
-	     	spares <- simulate(nm, nsim = sims/10)
+    while(length(sm.list) < sims){ 
+        spares <- simulate(nm, nsim = max(sims/10, 1))
         spares.list <- lapply(seq(dim(spares)[3]), 
 					function(i){spares[,, i]})
         spares.list <- lapply(spares.list, function(i){
-					if (any(colSums(i) == 0) | any(rowSums(i) == 0)){ 
-		        NULL
-					}else{
-						i
-					}
-				})
-				spares.list[sapply(spares.list, is.null)] <- NULL
-				sm.list <- append(sm.list, spares.list)
+            if (any(colSums(i) == 0) | any(rowSums(i) == 0)){ 
+                NULL
+            }else{
+                i
+            }
+          })
+	    
+        spares.list[sapply(spares.list, is.null)] <- NULL
+        sm.list <- append(sm.list, spares.list)
         if(verbose == TRUE & length(sm.list) <= sims){ 
           setTxtProgressBar(pb, length(sm.list))
-				}
-				if(length(sm.list) >= sims){
-	        sm.list <- sm.list[1:sims]
-          flag = TRUE
-     		}
-      }
+        }
+        if(length(sm.list) >= sims){
+          sm.list <- sm.list[1:sims]
+          break
+        }      
     }
 
     if (ordinate == TRUE){
