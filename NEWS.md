@@ -1,3 +1,9 @@
+metacom 1.5.2
+==============
+
+* Order the null matrices for Coherence, and allow option to order them for turnover calculation. Not ordering nulls for Coherence results in erroneous positive coherence.
+
+
 metacom 1.5.1
 ==============
 

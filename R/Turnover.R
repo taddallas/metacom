@@ -92,7 +92,7 @@ Turnover = function (comm, method = "EMS", sims = 1000,
 	if(method != 'EMS'){
 		nulls <- NullMaker(comm = comm, sims = sims, 
 				method = method, allowEmpty = allowEmpty, 
-				verbose = verbose, ordinate = FALSE, seed=seed)
+				verbose = verbose, ordinate = order, seed=seed)
 	}
 
 	if(method=='EMS'){

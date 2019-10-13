@@ -117,7 +117,7 @@ Coherence <-function(comm, method='r1', sims=1000,
 		comm <- comm
 	}
 	statistic <- as.numeric(coherence(comm))
-	nulls <- NullMaker(comm=comm, sims=sims, method=method, ordinate=FALSE, 
+	nulls <- NullMaker(comm=comm, sims=sims, method=method, ordinate=TRUE, 
 		allowEmpty=allowEmpty, verbose=verbose, seed=seed)
 
 	simstat <- as.numeric(lapply(nulls,coherence))

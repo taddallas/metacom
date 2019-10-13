@@ -1,7 +1,6 @@
 ## Test environments
 
-* ubuntu 18.04, R 3.4.4
-* ubuntu 12.04 (on travis-ci), R 3.4.1
+* ubuntu 18.04, R 3.6.1
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -15,9 +14,7 @@ No changes affect reverse dependencies
 
 ---
 
-Fixed DESCRIPTION file, specifically formatting of the Author line. 
-
-Minor update to one function argument. 
+Minor update to one function. Removal of deprecated function for Modularity calculation.
 
 I have read and agree to the the CRAN policies at 
 https://cran.r-project.org/web/packages/policies.html
