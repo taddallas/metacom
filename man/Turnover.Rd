@@ -5,8 +5,8 @@
 \title{Determines species turnover}
 \usage{
 Turnover(comm, method = "EMS", sims = 1000, scores = 1,
-  order = TRUE, allowEmpty = FALSE, binary = TRUE, verbose = FALSE,
-  seed = 1, fill = TRUE)
+  order = TRUE, orderNulls = FALSE, allowEmpty = FALSE,
+  binary = TRUE, verbose = FALSE, seed = 1, fill = TRUE)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}
@@ -21,6 +21,9 @@ to use the approach outlined in Leibold and Mikkelson 2002. See details.}
 
 \item{order}{logical argument indicating whether to ordinate the interaction
 matrix or not. See details.}
+
+\item{orderNulls}{logical argument indicating whether to ordinate the null 
+matrices. Default is FALSE.}
 
 \item{allowEmpty}{logical argument indicating whether to allow null
 matrices to have empty rows or columns}
@@ -64,7 +67,9 @@ help file for 'commsimulator' or Wright et al. 1998 for more information.
 
 If 'order' is FALSE, the interaction matrix is not ordinated, allowing the
 user to order the matrix based on site characteristics or other biologically
-relevant characteristics.
+relevant characteristics. The 'orderNulls' argument allows the user to ordinate 
+the null matrices. While creating a more conservative test, this may negate
+the null model implemented (fixed row and column sums will not be maintained)
 
 This function can either be used as a standalone, or can be used through the
 'metacommunity()' function, which determines all 3 elements of metacommunity

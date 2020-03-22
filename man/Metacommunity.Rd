@@ -6,7 +6,8 @@
 \usage{
 Metacommunity(comm, scores = 1, method = "r1",
   turnoverMethod = "EMS", sims = 1000, order = TRUE,
-  allowEmpty = FALSE, binary = TRUE, verbose = FALSE, seed = 1)
+  orderNulls = FALSE, allowEmpty = FALSE, binary = TRUE,
+  verbose = FALSE, seed = 1)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}
@@ -25,7 +26,10 @@ far less constrained null space (good) -- can also be used}
 \item{sims}{number of simulated null matrices to use in analysis}
 
 \item{order}{logical argument indicating whether to ordinate the interaction
-matrix or not. See details.}
+matrix or not. Default is TRUE. See details.}
+
+\item{orderNulls}{logical argument indicating whether to ordinate the null 
+matrices. Default is FALSE.}
 
 \item{allowEmpty}{logical argument indicating whether to allow null
 matrices to have empty rows or columns}
@@ -77,7 +81,9 @@ file for 'commsim' or Wright et al. 1998 for more information.
 
 If 'order' is FALSE, the interaction matrix is not ordinated, allowing the
 user to order the matrix based on site characteristics or other biologically
-relevant characteristics.
+relevant characteristics. The 'orderNulls' argument allows the user to ordinate 
+the null matrices. While creating a more conservative test, this may negate
+the null model implemented (fixed row and column sums will not be maintained)
 }
 \note{
 This function may take awhile to finish as a result of the creation of

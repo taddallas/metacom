@@ -1,7 +1,7 @@
 Package: metacom
 Type: Package
 Title: Analysis of the 'Elements of Metacommunity Structure'
-Version: 1.5.2
+Version: 1.5.3
 Authors@R: c(
     person("Tad", "Dallas", email = "tad.a.dallas@gmail.com", role = c("aut","cre")),
     person("Tom", "Pulliam", email = "tomlinp@gmail.com", role = "ctb"))

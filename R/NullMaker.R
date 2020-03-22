@@ -56,7 +56,8 @@
 
 
 NullMaker = function (comm, sims = 1000, method = "r1", 
-  ordinate = FALSE, scores = 1, allowEmpty = FALSE, 
+  ordinate = FALSE, scores = 1, 
+	allowEmpty = FALSE, 
   verbose = FALSE, seed=1){
 
     if(verbose == TRUE){ 

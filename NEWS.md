@@ -1,3 +1,9 @@
+metacom 1.5.3
+==============
+
+* Allow the user to decide whether to ordinate the null matrices independent on the ordination of the empirical interaction matrix. Gives a bit more flexibility. 
+
+
 metacom 1.5.2
 ==============
 

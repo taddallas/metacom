@@ -21,7 +21,10 @@
 #'
 #' If 'order' is FALSE, the interaction matrix is not ordinated, allowing the
 #' user to order the matrix based on site characteristics or other biologically
-#' relevant characteristics.
+#' relevant characteristics. The 'orderNulls' argument allows the user to ordinate 
+#' the null matrices. While creating a more conservative test, this may negate
+#' the null model implemented (fixed row and column sums will not be maintained)
+#'
 #'
 #' @param comm community data in the form of a presence absence matrix
 #' @param scores Axis scores to ordinate matrix. 1: primary axis scores
@@ -34,7 +37,9 @@
 #'  far less constrained null space (good) -- can also be used
 #' @param sims number of simulated null matrices to use in analysis
 #' @param order logical argument indicating whether to ordinate the interaction
-#' matrix or not. See details.
+#' matrix or not. Default is TRUE. See details.
+#' @param orderNulls logical argument indicating whether to ordinate the null 
+#' matrices. Default is FALSE.
 #' @param allowEmpty logical argument indicating whether to allow null
 #' matrices to have empty rows or columns
 #' @param binary logical argument indicating whether to ordinate the community
@@ -85,8 +90,10 @@
 #'
 
 Metacommunity = function (comm, scores = 1, method = "r1",
-	turnoverMethod='EMS', sims = 1000, order = TRUE, 
-	allowEmpty = FALSE, binary = TRUE, verbose = FALSE, seed=1){
+	turnoverMethod='EMS', sims = 1000, 
+	order = TRUE, orderNulls=FALSE,
+	allowEmpty = FALSE, binary = TRUE, 
+	verbose = FALSE, seed=1){
 
     if(order){
       mat <- OrderMatrix(comm, scores = scores, binary = binary)
@@ -94,7 +101,8 @@ Metacommunity = function (comm, scores = 1, method = "r1",
       mat <- comm
     }
     nulls <- NullMaker(mat, sims = sims, method = method, allowEmpty = allowEmpty, 
-        verbose = verbose, ordinate=FALSE)
+        verbose = verbose, ordinate=orderNulls)
+
     coherence <- function(web) {
         zeros <- which(web == 0, arr.ind = TRUE)
         ret <- matrix(0, ncol = 2)

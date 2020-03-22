@@ -22,7 +22,9 @@
 #'
 #' If 'order' is FALSE, the interaction matrix is not ordinated, allowing the
 #' user to order the matrix based on site characteristics or other biologically
-#' relevant characteristics.
+#' relevant characteristics. The 'orderNulls' argument allows the user to ordinate 
+#' the null matrices. While creating a more conservative test, this may negate
+#' the null model implemented (fixed row and column sums will not be maintained)
 #'
 #' This function can either be used as a standalone, or can be used through the
 #' 'metacommunity()' function, which determines all 3 elements of metacommunity
@@ -38,6 +40,8 @@
 #' (default) 2: secondary axis scores
 #' @param order logical argument indicating whether to ordinate the interaction
 #' matrix or not. See details.
+#' @param orderNulls logical argument indicating whether to ordinate the null 
+#' matrices. Default is FALSE.
 #' @param allowEmpty logical argument indicating whether to allow null
 #' matrices to have empty rows or columns
 #' @param binary logical argument indicating whether to ordinate the community
@@ -74,8 +78,9 @@
 #' coh.intmat
 #'
 Coherence <-function(comm, method='r1', sims=1000, 
-  scores=1, order=TRUE, allowEmpty=FALSE, 
-  binary=TRUE, verbose=FALSE, seed=1){
+  scores=1, order=TRUE, orderNulls=FALSE,
+	allowEmpty=FALSE, binary=TRUE, 
+	verbose=FALSE, seed=1){
 
 	coherence <- function(web){
 		zeros <- which(web==0, arr.ind=TRUE)
@@ -117,8 +122,10 @@ Coherence <-function(comm, method='r1', sims=1000,
 		comm <- comm
 	}
 	statistic <- as.numeric(coherence(comm))
-	nulls <- NullMaker(comm=comm, sims=sims, method=method, ordinate=TRUE, 
-		allowEmpty=allowEmpty, verbose=verbose, seed=seed)
+	nulls <- NullMaker(comm=comm, sims=sims, 
+		method=method, ordinate=orderNulls, 
+		allowEmpty=allowEmpty, verbose=verbose, 
+		seed=seed)
 
 	simstat <- as.numeric(lapply(nulls,coherence))
 	varstat <- sd(simstat)
