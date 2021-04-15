@@ -125,7 +125,7 @@ Coherence <-function(comm, method='r1', sims=1000,
 	
 	
   if(sequential==FALSE){
-    nulls <- NullMaker(mat, sims = sims, method = method, allowEmpty = allowEmpty, 
+    nulls <- NullMaker(comm, sims = sims, method = method, allowEmpty = allowEmpty, 
         verbose = verbose, ordinate=orderNulls)
     simstat <- vapply(nulls, coherence, FUN.VALUE=numeric(1))
   }
@@ -134,7 +134,7 @@ Coherence <-function(comm, method='r1', sims=1000,
     simstat <- c()
     for(i in 1:length(sims)){
       simstat[i] <- coherence(
-        NullMaker(mat, sims = 1, method = method, allowEmpty = allowEmpty, 
+        NullMaker(comm, sims = 1, method = method, allowEmpty = allowEmpty, 
           verbose = verbose, ordinate=orderNulls)
       )   
     }
