@@ -54,7 +54,6 @@
 #' nulls <- NullMaker(intmat, sims=100, method='r1')
 #'
 
-
 NullMaker = function (comm, sims = 1000, method = "r1", 
   ordinate = FALSE, scores = 1, 
 	allowEmpty = FALSE, 
@@ -80,7 +79,7 @@ NullMaker = function (comm, sims = 1000, method = "r1",
 							i
 						}
 					})
-        sm.list[sapply(sm.list, is.null)] = NULL
+        sm.list <- sm.list[sapply(sm.list, function(x){!is.null(x)})]
 		}
 		if(verbose == TRUE){setTxtProgressBar(pb, length(sm.list))}
 

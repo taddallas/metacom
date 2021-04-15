@@ -4,7 +4,8 @@
 \name{TestMatrices}
 \alias{TestMatrices}
 \title{Test matrices used to evaluate metacommunity functions}
-\format{A list containing interaction matrices from Leibold & Mikkelson 2002
+\format{
+A list containing interaction matrices from Leibold & Mikkelson 2002
 and Presley et al. 2010:
 
 1) dim=(20 x 20) Randomly generated matrix (`rbinom(400,1,0.4)`)
@@ -19,7 +20,8 @@ and Presley et al. 2010:
 
 6) dim=(20 x 20) Presley et al. Figure 3c
 
-7) dim(20 x 20) Presley et al. Figure 4a}
+7) dim(20 x 20) Presley et al. Figure 4a
+}
 \source{
 Leibold, M. A., & Mikkelson, G. M. (2002). Coherence, species
 turnover, and boundary clumping: elements of metacommunity structure. Oikos,

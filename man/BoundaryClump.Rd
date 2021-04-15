@@ -4,8 +4,7 @@
 \alias{BoundaryClump}
 \title{Determines boundary clumping}
 \usage{
-BoundaryClump(comm, order = TRUE, scores = 1, binary = TRUE,
-  fill = TRUE)
+BoundaryClump(comm, order = TRUE, scores = 1, binary = TRUE, fill = TRUE)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}

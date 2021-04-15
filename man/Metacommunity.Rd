@@ -4,10 +4,20 @@
 \alias{Metacommunity}
 \title{Analysis of the Elements of Metacommunity Structure}
 \usage{
-Metacommunity(comm, scores = 1, method = "r1",
-  turnoverMethod = "EMS", sims = 1000, order = TRUE,
-  orderNulls = FALSE, allowEmpty = FALSE, binary = TRUE,
-  verbose = FALSE, seed = 1)
+Metacommunity(
+  comm,
+  scores = 1,
+  method = "r1",
+  turnoverMethod = "EMS",
+  sims = 1000,
+  order = TRUE,
+  orderNulls = FALSE,
+  allowEmpty = FALSE,
+  binary = TRUE,
+  verbose = FALSE,
+  seed = 1,
+  sequential = FALSE
+)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}

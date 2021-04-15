@@ -4,8 +4,16 @@
 \alias{NullMaker}
 \title{Null matrix creator}
 \usage{
-NullMaker(comm, sims = 1000, method = "r1", ordinate = FALSE,
-  scores = 1, allowEmpty = FALSE, verbose = FALSE, seed = 1)
+NullMaker(
+  comm,
+  sims = 1000,
+  method = "r1",
+  ordinate = FALSE,
+  scores = 1,
+  allowEmpty = FALSE,
+  verbose = FALSE,
+  seed = 1
+)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}

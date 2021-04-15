@@ -4,10 +4,20 @@
 \alias{Imagine}
 \title{Plotting of site-by-species interaction matrices}
 \usage{
-Imagine(comm, col = c(0, 1), order = TRUE, scores = 1, fill = TRUE,
-  xlab = "Species", ylab = "Site", yline = 2, xline = 2,
-  sitenames = rownames(comm), speciesnames = colnames(comm),
-  binary = TRUE)
+Imagine(
+  comm,
+  col = c(0, 1),
+  order = TRUE,
+  scores = 1,
+  fill = TRUE,
+  xlab = "Species",
+  ylab = "Site",
+  yline = 2,
+  xline = 2,
+  sitenames = rownames(comm),
+  speciesnames = colnames(comm),
+  binary = TRUE
+)
 }
 \arguments{
 \item{comm}{community data in the form of a presence absence matrix}

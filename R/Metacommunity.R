@@ -93,17 +93,14 @@ Metacommunity = function (comm, scores = 1, method = "r1",
 	turnoverMethod='EMS', sims = 1000, 
 	order = TRUE, orderNulls=FALSE,
 	allowEmpty = FALSE, binary = TRUE, 
-	verbose = FALSE, seed=1){
+	verbose = FALSE, seed=1, sequential=FALSE){
 
     if(order){
       mat <- OrderMatrix(comm, scores = scores, binary = binary)
     }else{
       mat <- comm
     }
-    nulls <- NullMaker(mat, sims = sims, method = method, allowEmpty = allowEmpty, 
-        verbose = verbose, ordinate=orderNulls)
-
-    coherence <- function(web) {
+      coherence <- function(web) {
         zeros <- which(web == 0, arr.ind = TRUE)
         ret <- matrix(0, ncol = 2)
         uncols <- which(colSums(web) > 1)
@@ -139,13 +136,28 @@ Metacommunity = function (comm, scores = 1, method = "r1",
         return(dim(ret)[1])
     }
 
+
+    if(sequential==FALSE){
+      nulls <- NullMaker(mat, sims = sims, method = method, allowEmpty = allowEmpty, 
+          verbose = verbose, ordinate=orderNulls)
+      simstat <- vapply(nulls, coherence, FUN.VALUE=numeric(1))
+    }
+  
+    if(sequential){
+      simstat <- c()
+      for(i in 1:length(sims)){
+        simstat[i] <- coherence(
+          NullMaker(mat, sims = 1, method = method, allowEmpty = allowEmpty, 
+            verbose = verbose, ordinate=orderNulls)
+        )   
+      }
+    }
+
 		#coherence
     embabs <- coherence(mat)
-    simstat <- vapply(nulls, coherence, FUN.VALUE=numeric(1))
     varstat <- sd(simstat)
     z <- (embabs-mean(simstat))/(varstat)
     pval <- 2 * pnorm(-abs(z))
-
 		meth <- paste('method =', method)
     coh.out <- data.frame(name=c('embAbs', 'z', 'p', 
 			'simMean', 'simVariance', meth), 
@@ -153,7 +165,7 @@ Metacommunity = function (comm, scores = 1, method = "r1",
 
 		#boundary clumping
     boundmat <- BoundaryClump(mat, scores = scores, order = FALSE, 
-        binary = binary, fill=TRUE)
+      binary = binary, fill=TRUE)
 
 		#turnover
 		tur <- Turnover(comm, method=turnoverMethod, scores=scores, 

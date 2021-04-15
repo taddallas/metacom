@@ -80,7 +80,8 @@
 Coherence <-function(comm, method='r1', sims=1000, 
   scores=1, order=TRUE, orderNulls=FALSE,
 	allowEmpty=FALSE, binary=TRUE, 
-	verbose=FALSE, seed=1){
+	verbose=FALSE, seed=1, 
+	sequential=FALSE){
 
 	coherence <- function(web){
 		zeros <- which(web==0, arr.ind=TRUE)
@@ -121,13 +122,25 @@ Coherence <-function(comm, method='r1', sims=1000,
   }else{
 		comm <- comm
 	}
-	statistic <- as.numeric(coherence(comm))
-	nulls <- NullMaker(comm=comm, sims=sims, 
-		method=method, ordinate=orderNulls, 
-		allowEmpty=allowEmpty, verbose=verbose, 
-		seed=seed)
+	
+	
+  if(sequential==FALSE){
+    nulls <- NullMaker(mat, sims = sims, method = method, allowEmpty = allowEmpty, 
+        verbose = verbose, ordinate=orderNulls)
+    simstat <- vapply(nulls, coherence, FUN.VALUE=numeric(1))
+  }
 
-	simstat <- as.numeric(lapply(nulls,coherence))
+  if(sequential){
+    simstat <- c()
+    for(i in 1:length(sims)){
+      simstat[i] <- coherence(
+        NullMaker(mat, sims = 1, method = method, allowEmpty = allowEmpty, 
+          verbose = verbose, ordinate=orderNulls)
+      )   
+    }
+  }
+
+	statistic <- as.numeric(coherence(comm))
 	varstat <- sd(simstat)
 	z <- (statistic-mean(simstat))/(varstat)
 	pval <- 2*pnorm(-abs(z))
