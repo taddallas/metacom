@@ -50,7 +50,9 @@
 #' creation of null matrices. Useful for conservative null models on large
 #' and/or sparse data.
 #' @param seed seed for simulating the null model. Null matrices should be repeatable.
-#'
+#' @param sequential (boolean) create all null matrices at once, or calculate stats 
+#'  sequentially (memory limited users should consider using sequential=TRUE)
+#' 
 #' @return A vector containing the number of embedded absences (embAbs), 
 #' z-score (z), p-value (pval), mean (simulatedMean) and variance (simulatedVariance) 
 #' of simulations, and null model randomization method (method).

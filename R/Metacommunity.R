@@ -48,6 +48,10 @@
 #' creation of null matrices. Useful for conservative null models on large
 #' and/or sparse data.
 #' @param seed seed for simulating the null model. Null matrices should be repeatable.
+#' @param sequential (boolean) create all null matrices at once, or calculate stats 
+#'  sequentially (memory limited users should consider using sequential=TRUE)
+#'
+#'
 #' @return A list of length 4, containing;
 #' Comm -- ordinated matrix used to calculate coherence, boundary
 #' clumping & turnover

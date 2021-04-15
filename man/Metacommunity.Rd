@@ -52,6 +52,9 @@ creation of null matrices. Useful for conservative null models on large
 and/or sparse data.}
 
 \item{seed}{seed for simulating the null model. Null matrices should be repeatable.}
+
+\item{sequential}{(boolean) create all null matrices at once, or calculate stats 
+sequentially (memory limited users should consider using sequential=TRUE)}
 }
 \value{
 A list of length 4, containing;
